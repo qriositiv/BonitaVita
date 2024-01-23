@@ -101,3 +101,52 @@ img {
     height: 340px;
     object-fit: cover;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+    body::after {
+        content: none;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    #text-box {
+        margin-top: 50px;
+        font-size: 36px;
+    }
+
+    .logo img {
+        width: 30px;
+    }
+
+    .site-info h1 {
+        font-size: 18px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    #content {
+        font-size: 18px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+}
