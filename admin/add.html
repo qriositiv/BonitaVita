@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="admin_files/style.css">
+    <title>[Admin] BonitaVita</title>
+</head>
+<body>    
+    <header id="menu">
+        <div class="logo">
+            <img src="../general_images/logo.png" alt="Logo">
+            <div class="site-info">
+                <p>BonitaVita</p>
+            </div>
+        </div>
+        <nav>
+          <div class="desktop-menu">
+            <ul>
+                <li><a href="manage.html">Мыло</a></li>     
+                <li><a href="">Добавить</a></li>
+                <li><a href="">Ингредиенты</a></li>
+                <li><a href="">Категории</a></li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+    <div id="text-box">
+        <p>Добавить мыло</p>
+    </div>
+    <section id="content">
+        <form id="soapForm">
+            <label for="soapId">Номер:</label>
+            <input type="text" id="soapId" name="soapId" required>
+    
+            <label for="name">Название:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="cost">Цена:</label>
+            <input type="text" id="cost" name="cost" required>
+    
+            <label for="weight">Вес:</label>
+            <input type="text" id="weight" name="weight" required>
+    
+            <hr><label for="photo" id="file-label">Добавить фотографии</label>
+            <input type="file" id="photo" name="photo" accept="image/*" multiple>
+            <div id="file-names"></div>
+
+            <hr><label for="ingredients">Ингредиенты</label>
+
+            <hr><label for="categories">Категории</label>
+    
+            <hr><label for="public">Добавить в "Новинки"</label>
+            <input type="checkbox" id="public" name="visibility" value="public">
+
+            <br><button type="submit">Подтвердить</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('photo').addEventListener('change', function () {
+            var files = this.files;
+            var fileNames = '';
+    
+            for (var i = 0; i < files.length; i++) {
+                fileNames += files[i].name + '<br>';
+            }
+    
+            document.getElementById('file-names').innerHTML = fileNames;
+        });
+    </script>
+    
+</body>
+</html>
