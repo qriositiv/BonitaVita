@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
-    <link rel="stylesheet" href="admin_files/style.css">
+    <link rel="stylesheet" href="add_files/style.css">
     <title>[Admin] BonitaVita</title>
 </head>
 <body>    
@@ -19,9 +19,10 @@
           <div class="desktop-menu">
             <ul>
                 <li><a href="manage.html">Мыло</a></li>     
-                <li><a href="">Добавить</a></li>
-                <li><a href="">Ингредиенты</a></li>
-                <li><a href="">Категории</a></li>
+                <li><a href="add.html">Добавить</a></li>
+                <li><a href="ingredients.html">Ингредиенты</a></li>
+                <li><a href="categories.html">Категории</a></li>
+                <li><a href="logout.php">Выйти</a></li>
             </ul>
         </div>
         </nav>
@@ -48,11 +49,13 @@
             <div id="file-names"></div>
 
             <hr><label for="ingredients">Ингредиенты</label>
+            <p>Не хватает ингредиентов?<br><a href="">Добавь здесь.</a></p>
 
             <hr><label for="categories">Категории</label>
+            <p>Нужна новая категория?<br><a href="">Добавь здесь.</a></p>
     
-            <hr><label for="public">Добавить в "Новинки"</label>
-            <input type="checkbox" id="public" name="visibility" value="public">
+            <hr><input type="checkbox" id="public" name="visibility" value="public">
+            <label for="public">Добавить в "Новинки"</label>
 
             <br><button type="submit">Подтвердить</button>
         </form>

@@ -1,5 +1,5 @@
 body {
-    background-image: url('images/background0.jpg');
+    background-image: url('images/background1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -68,6 +68,10 @@ nav a {
     font-size: 18px;
 }
 
+li:last-child a {
+    color: lightcoral; /* Set the color for the last link to red */
+}
+
 .fixed-header {
     position: fixed;
     top: 0;
@@ -82,62 +86,59 @@ nav a {
 #content {
     text-align: center;
     padding: 20px;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.5;
-    margin-top: 150px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     background-color: rgba(233, 181, 156, 0.92);
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#content form {
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+#content section#ingredient {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px; /* Adjust this margin as needed */
 }
 
-#content label {
-    display: inline-block;
-    margin-top: 15px;
+#content p {
+    margin-right: 40px; /* Adjust this margin as needed */
+}
+
+#content button.edit {
+    padding: 10px 20px;
     font-size: 18px;
+    background-color: #3498db; /* Change to desired color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#content button.delete {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff5e4c; /* Change to desired color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
 }
 
 #content input[type="text"] {
-    width: calc(100% - 22px);
+    width: 400px;
     padding: 10px;
     margin-top: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 5px;
     display: inline-block;
     vertical-align: middle;
-}
-
-#content input[type="file"] {
-    display: none;
-}
-
-#content label[for="photo"] {
-    display: inline-block;
-    background-color: #3498db;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#content label[for="photo"]:hover {
-    background-color: #2980b9;
-}
-
-#content input[type="file"]:focus + label {
-    outline: 1px solid #2980b9;
-}
-
-#content input[type="file"]:valid + label {
-    background-color: #2ecc71;
 }
 
 #content button {
@@ -156,12 +157,6 @@ nav a {
 #content button:hover {
     background-color: #2980b9;
 }
-
-#file-names {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
 
 
 
