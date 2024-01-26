@@ -52,12 +52,14 @@
             <div>
                 <img src="manage_files/images/soap2.jpg" alt="Product Photo">
             </div>
+
             <div>
                 <p><b>Номер: </b>2</p>
                 <p><b>Название: </b>COCONUT PARADISE</p>
                 <p><b>Цена: </b>12$</p>
                 <p><b>Вес: </b>150 g.</p>
             </div>
+            
             <div>
                 <p><b>Ингредиенты: </b>Молоко, Кокос, Шоколад</p>
                 <p><b>Категории: </b>Съедобный</p>
@@ -65,19 +67,6 @@
             <button class="edit">✏️</button>
         </div>
     </section>
-
-    <script>
-        document.getElementById('photo').addEventListener('change', function () {
-            var files = this.files;
-            var fileNames = '';
-    
-            for (var i = 0; i < files.length; i++) {
-                fileNames += files[i].name + '<br>';
-            }
-    
-            document.getElementById('file-names').innerHTML = fileNames;
-        });
-    </script>
     
 </body>
 </html>
