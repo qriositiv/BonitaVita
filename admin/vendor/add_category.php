@@ -19,9 +19,8 @@ $sql = "INSERT INTO category (soap_id, category) VALUES (-1, '$categoryName')";
 if ($connect->query($sql) === TRUE) {
     echo "Category added successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $connect->error;
 }
 
 // Close the database connection
 $connect->close();
-?>

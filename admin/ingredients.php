@@ -18,10 +18,10 @@
         <nav>
           <div class="desktop-menu">
             <ul>
-                <li><a href="manage.html">Мыло</a></li>     
-                <li><a href="add.html">Добавить</a></li>
-                <li><a href="ingredients.html">Ингредиенты</a></li>
-                <li><a href="categories.html">Категории</a></li>
+                <li><a href="manage.php">Мыло</a></li>     
+                <li><a href="add.php">Добавить</a></li>
+                <li><a href="ingredients.php">Ингредиенты</a></li>
+                <li><a href="categories.php">Категории</a></li>
                 <li><a href="logout.php">Выйти</a></li>
             </ul>
         </div>

@@ -11,5 +11,3 @@ mysqli_set_charset($connect, "utf8mb4");
 if (!$connect) {
     die('Error connecting to the database: ' . mysqli_connect_error());
 }
-
-?>
