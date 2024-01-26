@@ -18,10 +18,10 @@
         <nav>
           <div class="desktop-menu">
             <ul>
-                <li><a href="manage.html">Мыло</a></li>     
-                <li><a href="add.html">Добавить</a></li>
-                <li><a href="ingredients.html">Ингредиенты</a></li>
-                <li><a href="categories.html">Категории</a></li>
+                <li><a href="manage.php">Мыло</a></li>     
+                <li><a href="add.php">Добавить</a></li>
+                <li><a href="ingredients.php">Ингредиенты</a></li>
+                <li><a href="categories.php">Категории</a></li>
                 <li><a href="logout.php">Выйти</a></li>
             </ul>
         </div>
@@ -31,41 +31,68 @@
         <p>Мыло</p>
     </div>
     <section id="content">
-        <div>
-            <div>
-                <img src="manage_files/images/soap1.jpg" alt="Product Photo">
-            </div>
-            <div>
-                <p><b>Номер: </b>1</p>
-                <p><b>Название: </b>BLUE DEEP</p>
-                <p><b>Цена: </b>10$</p>
-                <p><b>Вес: </b>120 g.</p>
-            </div>
-            <div>
-                <p><b>Ингредиенты: </b>Молоко, Бобриные перья, Травяная настойка</p>
-                <p><b>Категории: </b>Море, Синий, Пляж</p>
-            </div>
-            <button class="edit">✏️</button>
-        </div>
+        <?php
+        require_once 'config/connect.php';
 
-        <div>
-            <div>
-                <img src="manage_files/images/soap2.jpg" alt="Product Photo">
-            </div>
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);    
 
-            <div>
-                <p><b>Номер: </b>2</p>
-                <p><b>Название: </b>COCONUT PARADISE</p>
-                <p><b>Цена: </b>12$</p>
-                <p><b>Вес: </b>150 g.</p>
-            </div>
-            
-            <div>
-                <p><b>Ингредиенты: </b>Молоко, Кокос, Шоколад</p>
-                <p><b>Категории: </b>Съедобный</p>
-            </div>
-            <button class="edit">✏️</button>
-        </div>
+        if ($connect->connect_error) {
+            die("Connection failed: " . $connect->connect_error);
+        }
+
+        $sql = "SELECT DISTINCT soap_id FROM soap";
+        $result = $connect->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $soapId = $row['soap_id'];
+
+                $soapSql = "SELECT * FROM soap WHERE soap_id = $soapId";
+                $soapResult = $connect->query($soapSql);
+                $soapData = $soapResult->fetch_assoc();
+
+                $ingredientSql = "SELECT ingredient FROM ingredients WHERE soap_id = $soapId";
+                $ingredientResult = $connect->query($ingredientSql);
+                $ingredients = [];
+                while ($ingredientRow = $ingredientResult->fetch_assoc()) {
+                    $ingredients[] = $ingredientRow['ingredient'];
+                }
+
+                $categorySql = "SELECT category FROM category WHERE soap_id = $soapId";
+                $categoryResult = $connect->query($categorySql);
+                $categories = [];
+                while ($categoryRow = $categoryResult->fetch_assoc()) {
+                    $categories[] = $categoryRow['category'];
+                }
+
+                echo "
+                        <div>
+                            <div>
+                                <img src=\"manage_files/images/soap1.jpg\" alt=\"Product Photo\">
+                            </div>
+                            <div>
+                                <p><b>Номер: </b>{$soapData['soap_id']}</p>
+                                <p><b>Название: </b>{$soapData['soap_name']}</p>
+                                <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
+                                <p><b>Вес: </b>{$soapData['soap_weight']}</p>
+                                <p><b>Отображается в новинках: </b>". (($soapData['is_new_soap'] == 1) ? 'Да' : 'Нет') . "</p>
+                            </div>
+                            
+                            <div>
+                                <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
+                                <p><b>Категории: </b>" . implode(", ", $categories) . "</p>
+                            </div>
+                            <button class=\"edit\">Изменить</button>
+                        </div>
+                    ";
+            }
+        } else {
+            echo "Мыло не найдено";
+        }
+
+        $connect->close();
+        ?>
     </section>
     
 </body>
