@@ -32,21 +32,37 @@
     </div>
     <section id="content">
         
-        <section id="ingredient">
-            <p>Козье молоко</p>
-            <button class="edit">✏️</button>
-            <button class="delete">✖️</button>
-        </section>
+        <?php
+        require_once 'config/connect.php';
 
-        <section id="ingredient">
-            <p>Любовь</p>
-            <button class="edit">✏️</button>
-            <button class="delete">✖️</button>
-        </section>
+        if ($connect->connect_error) {
+            die("Connection failed: " . $connect->connect_error);
+        }
+
+        $sql = "SELECT DISTINCT ingredient FROM ingredients";
+        $result = $connect->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $currentIngredient = $row['ingredient'];
+                echo "<section id='ingredient'>
+                        <p>$currentIngredient</p>
+                        <button class='edit'>✏️</button>
+                        <button class='delete'>✖️</button>
+                    </section>";
+            }
+        } else {
+            echo "No ingredients found";
+        }
+
+        $connect->close();
+        ?>
 
         <hr><h4>Добавить ингредиент</h4>
-        <input type="text" id="ingredient" name="ingredient" required>
-        <button type="submit">Подтвердить</button>
+        <form id="addIngredientButton" action="vendor/add_ingredient.php" method="post">
+            <input type="text" id="ingredient" name="ingredient" required>
+            <button type="submit">Подтвердить</button>
+        </form>
 
     </section>
     
