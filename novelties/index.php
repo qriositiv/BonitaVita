@@ -75,7 +75,7 @@
                                 <p><b>Номер: </b>{$soapData['soap_id']}</p>
                                 <p><b>Название: </b>{$soapData['soap_name']}</p>
                                 <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
-                                <p><b>Вес: </b>{$soapData['soap_weight']}</p>
+                                <p><b>Вес: </b>{$soapData['soap_weight']} g</p>
                             </div>
                             
                             <div>
@@ -87,7 +87,7 @@
                     ";
             }
         } else {
-            echo "Мыло не найдено";
+            echo "Новинок не найдено";
         }
 
         $connect->close();

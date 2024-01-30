@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
-    <link rel="stylesheet" href="contacts_files/style.css">
+    <link rel="stylesheet" href="create_files/style.css">
     <title>BonitaVita</title>
 </head>
 <body>    
@@ -12,7 +12,7 @@
         <div class="logo">
             <img src="general_images/logo.png" alt="Logo">
             <div class="site-info">
-                <p>BonitaVita</p>
+                <p>Создать своё мыло</p>
             </div>
         </div>
         <nav>
@@ -21,24 +21,17 @@
                 <li><a href="../">Главная</a></li>     
                 <li><a href="../novelties/">Новинки</a></li>
                 <li><a href="../assortment/">Ассортимент</a></li>
-                <li><a href="../create/">Создать мыло</a></li>
-                <li><a href="">Контакты</a></li>
+                <li><a href="">Создать мыло</a></li>
+                <li><a href="../contacts/">Контакты</a></li>
             </ul>
         </div>
         </nav>
     </header>
     <div id="text-box">
-        <p>Контакты</p>
+        <p>BonitaVita</p>
     </div>
     <section id="content">
-        <img src="contacts_files/images/Vita.jpg" alt="Vita Image">
-        <div>
-            <p>Виталия Роенко</p>
-            <p>Клайпеда, Литва</p>
-            <p>Тел: +37064700750</p>
-            <p>Инст: BonitaVita</p>
-            <p>bonitavita03@gmail.com</p>
-        </div>
+        <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p>
     </section>
 </body>
 </html>
