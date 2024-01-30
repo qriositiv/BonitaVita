@@ -39,14 +39,14 @@
             die("Connection failed: " . $connect->connect_error);
         }
 
-        $sql = "SELECT DISTINCT category FROM category";
+        $sql = "SELECT DISTINCT category FROM category WHERE soap_id = -1";
         $result = $connect->query($sql);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $currentCategory = $row['categoty'];
+                $currentCategory = $row['category'];
                 echo "<section id='categoty'>
-                        <p>$currentCategoty</p>
+                        <p>$currentCategory</p>
                         <button class='edit'>✏️</button>
                         <button class='delete'>✖️</button>
                     </section>";

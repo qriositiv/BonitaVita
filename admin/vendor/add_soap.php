@@ -30,6 +30,14 @@
                 }
             }
 
+            if (!empty($_POST['ingredients'])) {
+                foreach ($_POST['ingredients'] as $ingredient) {
+                    $ingredient = mysqli_real_escape_string($connect, $ingredient);
+                    $sqlIngredient = "INSERT INTO ingredients (soap_id, ingredient) VALUES ('$soapId', '$ingredient')";
+                    $connect->query($sqlIngredient);
+                }
+            }
+
             echo "Soap added successfully!";
         } else {
             echo "Error: " . $sql . "<br>" . $connect->error;

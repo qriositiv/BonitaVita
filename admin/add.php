@@ -52,7 +52,7 @@
             <?php
 
             require_once 'config/connect.php';
-
+    
             if ($connect->connect_error) {
                 die("Connection failed: " . $connect->connect_error);
             }

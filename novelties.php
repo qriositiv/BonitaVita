@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
-    <link rel="stylesheet" href="manage_files/style.css">
-    <title>[Admin] BonitaVita</title>
+    <link rel="stylesheet" href="novelties_files/style.css">
+    <title>BonitaVita</title>
 </head>
 <body>    
     <header id="menu">
         <div class="logo">
-            <img src="../general_images/logo.png" alt="Logo">
+            <img src="general_images/logo.png" alt="Logo">
             <div class="site-info">
                 <p>BonitaVita</p>
             </div>
@@ -18,21 +18,21 @@
         <nav>
           <div class="desktop-menu">
             <ul>
-                <li><a href="manage.php">Мыло</a></li>     
-                <li><a href="add.php">Добавить</a></li>
-                <li><a href="ingredients.php">Ингредиенты</a></li>
-                <li><a href="categories.php">Категории</a></li>
-                <li><a href="logout.php">Выйти</a></li>
+                <li><a href="about.html">Главная</a></li>     
+                <li><a href="novelties.html">Новинки</a></li>
+                <li><a href="#assortment">!Ассортимент</a></li>
+                <li><a href="#create_soap">!Создать мыло</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
             </ul>
         </div>
         </nav>
     </header>
-    <div id="text-box"  >
-        <p>Мыло</p>
+    <div id="text-box">
+        <p>Новинки</p>
     </div>
     <section id="content">
-        <?php
-        require_once 'config/connect.php';
+    <?php
+        require_once '../config/connect.php';
 
         error_reporting(E_ALL);
         ini_set('display_errors', 1);    
@@ -76,15 +76,13 @@
                                 <p><b>Название: </b>{$soapData['soap_name']}</p>
                                 <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
                                 <p><b>Вес: </b>{$soapData['soap_weight']}</p>
-                                <p><b>Отображается в новинках:  </b>". (($soapData['is_new_soap'] == 1) ? 'Да' : 'Нет') . "</p>
                             </div>
                             
                             <div>
                                 <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
                                 <p><b>Категории: </b>" . implode(", ", $categories) . "</p>
                             </div>
-                            <button class=\"edit\">Изменить</button>
-                            <button class=\"delete\" data-soap-id='{$soapData['soap_id']}'>Удалить</button>
+                            <button class=\"view\">Подробнее</button>
                         </div>
                     ";
             }
@@ -95,39 +93,5 @@
         $connect->close();
         ?>
     </section>
-    
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-    $(document).ready(function() {
-    $('.delete').on('click', function() {
-        var soapId = $(this).data('soap-id');
-
-        if (!soapId) {
-            console.error('Missing soap_id data attribute.');
-            return;
-        }
-
-        console.log('Attempting to delete soap with ID:', soapId);
-
-        $.ajax({
-            type: 'POST',
-            url: 'vendor/delete_soap.php',
-            data: { soap_id: soapId },
-            success: function(response) {
-                console.log('Success:', response);
-                alert(response); // Display the response from the server
-                location.reload();
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', error);
-                alert('Error: ' + error);
-            }
-        });
-    });
-});
-
-
-    </script>
-    
 </body>
 </html>
