@@ -1,5 +1,5 @@
 body {
-    background-image: url('images/background.jpg');
+    background-image: url('../images/background/background0.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,7 +46,7 @@ header {
     margin-right: 10px;
 }
 
-.site-info h1 {
+.site-info p {
     margin: 0;
     font-size: 24px;
 }
@@ -75,6 +75,15 @@ nav a {
     z-index: 1000;
     background-color: #333;
     padding: 10px 20px;
+}
+
+#mobile-menu-button {
+    display: none; /* hide the button in desktop view */
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
 }
 
 
@@ -124,7 +133,7 @@ img {
         width: 30px;
     }
 
-    .site-info h1 {
+    .site-info p {
         font-size: 18px;
     }
 
@@ -139,6 +148,29 @@ img {
 
     .desktop-menu {
         display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    #mobile-menu-button {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .mobile-menu ul {
+        display: none;
+    }
+
+    .mobile-menu.active ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     #content {

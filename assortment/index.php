@@ -32,7 +32,7 @@
     </div>
     <section id="content">
     <?php
-        require_once '../config/connect.php';
+        require '../config/connect.php';
 
         error_reporting(E_ALL);
         ini_set('display_errors', 1);    
@@ -69,7 +69,7 @@
                 echo "
                         <div>
                             <div>
-                                <img src=\"manage_files/images/soap1.jpg\" alt=\"Product Photo\">
+                                <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
                             </div>
                             <div>
                                 <p><b>Номер: </b>{$soapData['soap_id']}</p>
@@ -92,5 +92,91 @@
         $connect->close();
         ?>
     </section>
+
+    <?php
+    require '../config/connect.php';
+
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+    if ($connect->connect_error) {
+        die("Connection failed: " . $connect->connect_error);
+    }
+
+    $sqlCategories = "SELECT DISTINCT category FROM category";
+    $resultCategories = $connect->query($sqlCategories);
+
+    if ($resultCategories->num_rows > 0) {
+        while ($rowCategory = $resultCategories->fetch_assoc()) {
+            $category = $rowCategory["category"];
+            echo '<div id="section-title">';
+            echo '<p>' . $category . '</p>';
+            echo '</div>';
+
+            $sqlSoaps = "SELECT DISTINCT s.soap_id
+                FROM soap s
+                JOIN category c ON s.soap_id = c.soap_id
+                WHERE c.category = '$category'";
+
+            $resultSoaps = $connect->query($sqlSoaps);
+
+            if ($resultSoaps->num_rows > 0) {
+                echo '<section id="content">';
+                while ($rowSoap = $resultSoaps->fetch_assoc()) {
+                    $soapId = $rowSoap['soap_id'];
+
+                    $soapSql = "SELECT * FROM soap WHERE soap_id = $soapId";
+                    $soapResult = $connect->query($soapSql);
+                    $soapData = $soapResult->fetch_assoc();
+
+                    $ingredientSql = "SELECT ingredient FROM ingredients WHERE soap_id = $soapId";
+                    $ingredientResult = $connect->query($ingredientSql);
+                    $ingredients = [];
+                    while ($ingredientRow = $ingredientResult->fetch_assoc()) {
+                        $ingredients[] = $ingredientRow['ingredient'];
+                    }
+
+                    $categorySql = "SELECT category FROM category WHERE soap_id = $soapId";
+                    $categoryResult = $connect->query($categorySql);
+                    $categories = [];
+                    while ($categoryRow = $categoryResult->fetch_assoc()) {
+                        $categories[] = $categoryRow['category'];
+                    }
+
+                    echo "
+                        <div>
+                            <div>
+                                <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
+                            </div>
+                            <div>
+                                <p><b>Номер: </b>{$soapData['soap_id']}</p>
+                                <p><b>Название: </b>{$soapData['soap_name']}</p>
+                                <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
+                                <p><b>Вес: </b>{$soapData['soap_weight']} g</p>
+                            </div>
+                            
+                            <div>
+                                <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
+                            </div>
+                            <button class=\"view\">Подробнее</button>
+                        </div>
+                    ";
+                }
+                echo '</section>';
+            } else {
+                echo "Новинок не найдено";
+            }
+        }
+    } else {
+        echo "0 results";
+    }
+
+    $connect->close();
+    ?>
+
+    <div id="section-title">
+        <p> </p>
+    </div>
+
 </body>
 </html>
