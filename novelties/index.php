@@ -18,11 +18,11 @@
         <nav>
           <div class="desktop-menu">
             <ul>
-                <li><a href="../index.html">Главная</a></li>     
+                <li><a href="../">Главная</a></li>     
                 <li><a href="">Новинки</a></li>
-                <li><a href="assortment/index.php">Ассортимент</a></li>
-                <li><a href="create_soap/index.php">Создать мыло</a></li>
-                <li><a href="contacts/index.html">Контакты</a></li>
+                <li><a href="../assortment/">Ассортимент</a></li>
+                <li><a href="../create/">Создать мыло</a></li>
+                <li><a href="../contacts/">Контакты</a></li>
             </ul>
         </div>
         </nav>
