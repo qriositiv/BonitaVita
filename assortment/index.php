@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
-    <link rel="stylesheet" href="novelties_files/style.css">
+    <link rel="stylesheet" href="assortment_files/style.css">
     <title>BonitaVita</title>
 </head>
 <body>    
@@ -19,8 +19,8 @@
           <div class="desktop-menu">
             <ul>
                 <li><a href="../">Главная</a></li>     
-                <li><a href="">Новинки</a></li>
-                <li><a href="../assortment/">Ассортимент</a></li>
+                <li><a href="../novelties">Новинки</a></li>
+                <li><a href="">Ассортимент</a></li>
                 <li><a href="../create/">Создать мыло</a></li>
                 <li><a href="../contacts/">Контакты</a></li>
             </ul>
@@ -28,7 +28,7 @@
         </nav>
     </header>
     <div id="text-box">
-        <p>Новинки</p>
+        <p>Ассортимент</p>
     </div>
     <section id="content">
     <?php
@@ -41,7 +41,7 @@
             die("Connection failed: " . $connect->connect_error);
         }
 
-        $sql = "SELECT DISTINCT soap_id FROM soap WHERE is_new_soap = 1";
+        $sql = "SELECT DISTINCT soap_id FROM soap";
         $result = $connect->query($sql);
 
         if ($result->num_rows > 0) {

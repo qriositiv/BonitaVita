@@ -12,7 +12,7 @@
         <div class="logo">
             <img src="general_images/logo.png" alt="Logo">
             <div class="site-info">
-                <p>Создать своё мыло</p>
+                <p>BonitaVita</p>
             </div>
         </div>
         <nav>
@@ -28,7 +28,7 @@
         </nav>
     </header>
     <div id="text-box">
-        <p>BonitaVita</p>
+        <p>Создать своё мыло</p>
     </div>
     <section id="content">
         <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p>
