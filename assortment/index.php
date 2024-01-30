@@ -10,25 +10,38 @@
 <body>    
     <header id="menu">
         <div class="logo">
-            <img src="general_images/logo.png" alt="Logo">
+            <img src="images/logo.png" alt="Logo">
             <div class="site-info">
                 <p>BonitaVita</p>
             </div>
         </div>
         <nav>
-          <div class="desktop-menu">
-            <ul>
-                <li><a href="../">Главная</a></li>     
-                <li><a href="../novelties">Новинки</a></li>
-                <li><a href="">Ассортимент</a></li>
-                <li><a href="../create/">Создать мыло</a></li>
-                <li><a href="../contacts/">Контакты</a></li>
-            </ul>
-        </div>
+            <div class="desktop-menu">
+                <ul>
+                    <li><a href="../">Главная</a></li>     
+                    <li><a href="../novelties/">Новинки</a></li>
+                    <li><a href="">Ассортимент</a></li>
+                    <li><a href="../create/">Создать мыло</a></li>
+                    <li><a href="../contacts/">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="mobile-menu">
+                <button id="mobile-menu-button">&#9776; Меню</button>
+                <ul>
+                    <li><a href="../">Главная</a></li>     
+                    <li><a href="../novelties/">Новинки</a></li>
+                    <li><a href="">Ассортимент</a></li>
+                    <li><a href="../create/">Создать мыло</a></li>
+                    <li><a href="../contacts/">Контакты</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <div id="text-box">
         <p>Ассортимент</p>
+    </div>
+    <div id="section-title">
+        <p>Фавориты</p>
     </div>
     <section id="content">
     <?php
@@ -177,6 +190,8 @@
     <div id="section-title">
         <p> </p>
     </div>
+
+    <script src="assortment_files/script.js"></script>
 
 </body>
 </html>

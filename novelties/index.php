@@ -69,7 +69,7 @@
                 echo "
                         <div>
                             <div>
-                                <img src=\"manage_files/images/soap1.jpg\" alt=\"Product Photo\">
+                                <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
                             </div>
                             <div>
                                 <p><b>Номер: </b>{$soapData['soap_id']}</p>
