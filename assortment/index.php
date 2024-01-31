@@ -80,7 +80,7 @@
                 }
 
                 echo "
-                        <div>
+                        <div id=\"soap_$soapId\">
                             <div>
                                 <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
                             </div>
@@ -94,7 +94,7 @@
                             <div>
                                 <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
                             </div>
-                            <button class=\"view\">Подробнее</button>
+                            <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
                         </div>
                     ";
             }
@@ -157,7 +157,7 @@
                     }
 
                     echo "
-                        <div>
+                        <div id=\"soap_$soapId\">
                             <div>
                                 <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
                             </div>
@@ -171,7 +171,7 @@
                             <div>
                                 <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
                             </div>
-                            <button class=\"view\">Подробнее</button>
+                            <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
                         </div>
                     ";
                 }
@@ -192,6 +192,12 @@
     </div>
 
     <script src="assortment_files/script.js"></script>
+
+    <script>
+        function redirectToSoap(soapId) {
+            window.location.href = '../soap.php?soapId=' + soapId;
+        }
+    </script>
 
 </body>
 </html>
