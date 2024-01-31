@@ -30,8 +30,8 @@
                 <ul>
                     <li><a href="../">Главная</a></li>     
                     <li><a href="../novelties/">Новинки</a></li>
-                    <li><a href="">Ассортимент</a></li>
-                    <li><a href="../create/">Создать мыло</a></li>
+                    <li><a href="../assortment">Ассортимент</a></li>
+                    <li><a href="">Создать мыло</a></li>
                     <li><a href="../contacts/">Контакты</a></li>
                 </ul>
             </div>
