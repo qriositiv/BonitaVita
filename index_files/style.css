@@ -108,6 +108,23 @@ img {
     object-fit: cover;
 }
 
+.carousel-image {
+    display: block;
+    margin: 0 auto;
+    width: 540px;
+    height: 540px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.image-carousel {
+    display: block;
+    margin: 0 auto;
+    width: 560px;
+    height: 560px;
+    object-fit: cover;
+}
+
 
 
 @media only screen and (max-width: 756px) {
@@ -175,7 +192,24 @@ img {
     }
 
     img {
-        width: 100%;
-        height: auto;
+        width: 340px;
+        height: 340px;
+    }
+
+    .carousel-image {
+        display: block;
+        margin: 0 auto;
+        width: 320px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    
+    .image-carousel {
+        display: block;
+        margin: 0 auto;
+        width: 340px;
+        height: 340px;
+        object-fit: cover;
     }
 }

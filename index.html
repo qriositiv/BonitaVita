@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
     <link rel="stylesheet" href="index_files/style.css">
     <title>BonitaVita</title>
@@ -42,12 +44,33 @@
     </div>
     <section id="content">
         <p>О нас</p>
-        <img src="index_files/images/soap1.jpg" alt="Soap Image">
+        <div class="image-carousel">
+            <img class="carousel-image" src="images/soap_images/1A.jpg" alt="Soap Image 1">
+            <img class="carousel-image" src="images/soap_images/2A.jpg" alt="Soap Image 2">
+            <img class="carousel-image" src="images/soap_images/3A.jpg" alt="Soap Image 3">
+            <img class="carousel-image" src="images/soap_images/4A.jpg" alt="Soap Image 4">
+            <img class="carousel-image" src="images/soap_images/5A.jpg" alt="Soap Image 5">
+            <img class="carousel-image" src="images/soap_images/6A.jpg" alt="Soap Image 6">
+        </div>
         <p>Натуральное мыло ручной работы</p>
-        <p>BonitaVita - производит мыло из натуральных, органический продуктов. Главная особенность данного магазина - вы можете сами придумать дизайн своего мыла или выбрать из представленных вариантов. Прекрасная возможность полностью изучить состав каждого продукта и учесть все тонкости.  Мыло - это искусство и мы хотим подарить это искусство каждому!</p>
+        <p>BonitaVita - производит мыло из натуральных, органических продуктов. Главная особенность данного магазина - вы можете сами придумать дизайн своего мыла или выбрать из представленных вариантов. Прекрасная возможность полностью изучить состав каждого продукта и учесть все тонкости.  Мыло - это искусство и мы хотим подарить это искусство каждому!</p>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script src="index_files/script.js"></script>
 
+    <script>
+        $(document).ready(function(){
+            $('.image-carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear'
+            });
+        });
+    </script>
 </body>
 </html>
