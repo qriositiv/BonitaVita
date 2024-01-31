@@ -68,6 +68,10 @@ nav a {
     font-size: 18px;
 }
 
+li:last-child a {
+    color: lightcoral;
+}
+
 .fixed-header {
     position: fixed;
     top: 0;
@@ -106,10 +110,10 @@ nav a {
 
 #content > div {
     margin: 50px;
-    width: 380px; /* Optional: Set a maximum width for each column */
+    width: 380px;
     box-sizing: border-box;
-    border: 1px solid #000; /* Add outside border */
-    border-radius: 5px; /* Optional: Add border-radius */
+    border: 1px solid #000;
+    border-radius: 5px;
     text-align: center;
 }
 
@@ -117,7 +121,7 @@ nav a {
     width: 360px;
     height: 360px;
     margin-top: 10px;
-    border-radius: 5px; /* Optional: Add border-radius to images */
+    border-radius: 5px;
 }
 
 #content > div > p {

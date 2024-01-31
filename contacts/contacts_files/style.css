@@ -68,6 +68,10 @@ nav a {
     font-size: 18px;
 }
 
+li:last-child a {
+    color: lightcoral;
+}
+
 .fixed-header {
     position: fixed;
     top: 0;
@@ -108,8 +112,8 @@ nav a {
     width: 360px;
     height: 360px;
     object-fit: cover;
-    margin-left: 150px; /* Adjust the margin as needed */
-    margin-right: 50px; /* Adjust the margin as needed */
+    margin-left: 150px;
+    margin-right: 50px;
 }
 
 #content div {
@@ -117,7 +121,7 @@ nav a {
 }
 
 #content div p {
-    margin-bottom: -15px; /* Adjust the margin as needed */
+    margin-bottom: -15px;
 }
 
 
@@ -165,15 +169,15 @@ nav a {
     }
 
     #content img {
-        margin-right: 0; /* Remove margin on small screens */
-        margin-bottom: 5px; /* Add space between image and text */
-        margin-left: auto; /* Center the image horizontally */
+        margin-right: 0;
+        margin-bottom: 5px;
+        margin-left: auto;
         margin-right: auto;
         display: block;
     }
 
     #content div {
-        width: 100%; /* Make the text full width on small screens */
+        width: 100%;
     }
 
     .desktop-menu {

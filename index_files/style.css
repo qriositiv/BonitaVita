@@ -68,6 +68,10 @@ nav a {
     font-size: 18px;
 }
 
+li:last-child a {
+    color: lightcoral;
+}
+
 .fixed-header {
     position: fixed;
     top: 0;
@@ -78,7 +82,7 @@ nav a {
 }
 
 #mobile-menu-button {
-    display: none; /* hide the button in desktop view */
+    display: none;
 }
 
 
