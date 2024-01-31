@@ -8,23 +8,33 @@
     <title>BonitaVita</title>
 </head>
 <body>    
-    <header id="menu">
+<header id="menu">
         <div class="logo">
-            <img src="general_images/logo.png" alt="Logo">
+            <img src="../images/logo.png" alt="Logo">
             <div class="site-info">
                 <p>BonitaVita</p>
             </div>
         </div>
         <nav>
-          <div class="desktop-menu">
-            <ul>
-                <li><a href="../">Главная</a></li>     
-                <li><a href="../novelties/">Новинки</a></li>
-                <li><a href="../assortment/">Ассортимент</a></li>
-                <li><a href="">Создать мыло</a></li>
-                <li><a href="../contacts/">Контакты</a></li>
-            </ul>
-        </div>
+            <div class="desktop-menu">
+                <ul>
+                    <li><a href="../">Главная</a></li>     
+                    <li><a href="../novelties/">Новинки</a></li>
+                    <li><a href="">Ассортимент</a></li>
+                    <li><a href="../create/">Создать мыло</a></li>
+                    <li><a href="../contacts/">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="mobile-menu">
+                <button id="mobile-menu-button">&#9776; Меню</button>
+                <ul>
+                    <li><a href="../">Главная</a></li>     
+                    <li><a href="../novelties/">Новинки</a></li>
+                    <li><a href="">Ассортимент</a></li>
+                    <li><a href="../create/">Создать мыло</a></li>
+                    <li><a href="../contacts/">Контакты</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <div id="text-box">
@@ -33,5 +43,8 @@
     <section id="content">
         <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p>
     </section>
+
+    <script src="create_files/script.js"></script>
+
 </body>
 </html>

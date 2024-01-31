@@ -1,5 +1,5 @@
 body {
-    background-image: url('images/background.jpg');
+    background-image: url('../../images/background/background1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,7 +46,7 @@ header {
     margin-right: 10px;
 }
 
-.site-info h1 {
+.site-info p {
     margin: 0;
     font-size: 24px;
 }
@@ -68,10 +68,6 @@ nav a {
     font-size: 18px;
 }
 
-li:last-child a {
-    color: lightcoral; /* Set the color for the last link to red */
-}
-
 .fixed-header {
     position: fixed;
     top: 0;
@@ -81,6 +77,18 @@ li:last-child a {
     padding: 10px 20px;
 }
 
+#mobile-menu-button {
+    display: none; 
+}
+
+.desktop-menu {
+    display: flex;
+}
+
+.mobile-menu {
+    display: none;
+}
+
 
 
 #content {
@@ -88,7 +96,6 @@ li:last-child a {
     padding: 20px;
     font-size: 22px;
     line-height: 1.5;
-    margin-top: 150px;
     margin-bottom: 100px;
     background-color: rgba(233, 181, 156, 0.92);
     border-radius: 10px;
@@ -98,7 +105,6 @@ li:last-child a {
 }
 
 #content > div {
-    flex: 1;
     margin: 50px;
     width: 380px; /* Optional: Set a maximum width for each column */
     box-sizing: border-box;
@@ -133,9 +139,17 @@ li:last-child a {
     margin-bottom: 20px;
 }
 
+#section-title {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 48px;
+    color: #fff;
+}
 
 
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 756px) {
     body::after {
         content: none;
     }
@@ -153,7 +167,7 @@ li:last-child a {
         width: 30px;
     }
 
-    .site-info h1 {
+    .site-info p {
         font-size: 18px;
     }
 
@@ -168,6 +182,29 @@ li:last-child a {
 
     .desktop-menu {
         display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    #mobile-menu-button {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .mobile-menu ul {
+        display: none;
+    }
+
+    .mobile-menu.active ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     #content {

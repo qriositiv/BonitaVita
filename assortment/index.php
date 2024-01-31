@@ -10,7 +10,7 @@
 <body>    
     <header id="menu">
         <div class="logo">
-            <img src="images/logo.png" alt="Logo">
+            <img src="../images/logo.png" alt="Logo">
             <div class="site-info">
                 <p>BonitaVita</p>
             </div>
