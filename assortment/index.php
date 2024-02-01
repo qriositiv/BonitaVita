@@ -162,7 +162,7 @@
                                 <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
                             </div>
                             <div>
-                                <p>[<b>{$soapData['soap_id']}</b>] {$soapData['soap_name']}</p>
+                                <p>{$soapData['soap_name']}</p>
                                 <p>{$soapData['soap_cost']}€</p>
                             </div>
 

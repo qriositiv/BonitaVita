@@ -1,5 +1,5 @@
 body {
-    background-image: url('../../images/background/background2.jpg');
+    background-image: url('../images/background/background4.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -96,63 +96,61 @@ li:last-child a {
 
 
 #content {
-    text-align: center;
+    display: flex;
+    justify-content: centered;
+    align-items: center;
     padding: 20px;
     font-size: 32px;
-    line-height: 1;
+    line-height: 1.2;
+    margin-top: 150px;
     background-color: rgba(233, 181, 156, 0.92);
     border-radius: 10px;
+}
+
+.image-carousel {
+    display: block;
+    width: 520px;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-image {
+    display: block;
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-details {
+    width: 40%;
+    width: 1000px;
+    margin-left: 80px;
+}
+
+.product-details p {
+    margin-bottom: 15px;
+}
+
+
+
+#social-links {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    margin-top: 20px;
 }
 
-#content > div {
-    margin: 20px;
-    width: 380px;
-    box-sizing: border-box;
-    border: 1px solid #000;
-    border-radius: 5px;
-    text-align: center;
-}
-
-#content img {
-    width: 360px;
-    height: 360px;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-#content > div > p {
-    margin: 0;
-    padding: 5px;
-    border-bottom: 1px solid #000;
-}
-
-#content button {
-    background-color: rgba(118, 168, 141, 0.92);
-    color: white;
-    padding: 12px 90px;
-    font-size: 28px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.social-icon {
+    width: 60px;
+    height: 60px;
+    margin-top: 20px;
     margin-bottom: 20px;
+    margin-left: 20px;
 }
 
-#section-title {
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 48px;
-    color: #fff;
-}
-
-
-
-@media only screen and (max-width: 756px) {
+@media only screen and (max-width: 768px) {
     body::after {
         content: none;
     }
@@ -211,13 +209,22 @@ li:last-child a {
     }
 
     #content {
-        font-size: 28px;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        font-size: 22px;
+        flex-direction: column; /* Stack items vertically for mobile screens */
     }
 
-    img {
-        width: 100%;
+    .product-details {
+        margin-left: 0; /* Reset margin for mobile screens */
+        width: 95%;
+    }
+
+    .image-carousel {
+        width: 95%;
+        height: auto;
+    }
+    
+    .carousel-image {
+        width: 90%;
         height: auto;
     }
 }
