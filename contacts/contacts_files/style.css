@@ -174,11 +174,14 @@ li:last-child a {
     #content {
         flex-direction: column;
         text-align: center;
-        font-size: 24px;
+        font-size: 25px;
         margin-top: -10px;
     }
 
     #content img {
+        width: 95%;
+        height: auto;
+        max-height: 340px;
         margin-right: 0;
         margin-bottom: 5px;
         margin-left: auto;

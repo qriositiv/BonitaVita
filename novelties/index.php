@@ -82,14 +82,8 @@
                         <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
                     </div>
                     <div>
-                        <p><b>Номер: </b>{$soapData['soap_id']}</p>
-                        <p><b>Название: </b>{$soapData['soap_name']}</p>
-                        <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
-                        <p><b>Вес: </b>{$soapData['soap_weight']} g</p>
-                    </div>
-                    
-                    <div>
-                        <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
+                        <p><b>{$soapData['soap_name']}</b></p>
+                        <p>{$soapData['soap_cost']}€</p>
                     </div>
                     <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
                 </div>

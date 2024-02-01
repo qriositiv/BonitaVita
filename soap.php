@@ -90,7 +90,7 @@
                         <p><b>Номер: </b>{$soapData['soap_id']}</p>
                         <p><b>Название: </b>{$soapData['soap_name']}</p>
                         <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
-                        <p><b>Вес: </b>{$soapData['soap_weight']} g</p>
+                        <p><b>Вес: </b>{$soapData['soap_weight']} г</p>
                         <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
                     </div>
             </section>

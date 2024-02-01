@@ -208,15 +208,15 @@ img {
     }
 
     img {
-        width: 340px;
-        height: 340px;
+        width: 90%;
+        height: auto;
     }
 
     .carousel-image {
         display: block;
         margin: 0 auto;
-        width: 320px;
-        height: 320px;
+        width: 90%;
+        height: auto;
         object-fit: cover;
         border-radius: 10px;
     }
@@ -224,8 +224,8 @@ img {
     .image-carousel {
         display: block;
         margin: 0 auto;
-        width: 340px;
-        height: 340px;
+        width: 95%;
+        height: auto;
         object-fit: cover;
     }
 }
