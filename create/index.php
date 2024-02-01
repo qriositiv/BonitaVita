@@ -44,6 +44,15 @@
         <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p>
     </section>
 
+    <section id="social-links">
+        <a href="https://www.instagram.com/_bonitavita_" target="_blank">
+            <img src="../images/inst-icon.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="mailto:bonitavita03@gmail.com">
+            <img src="../images/mail-icon.png" alt="Mail" class="social-icon">
+        </a>
+    </section>
+
     <script src="create_files/script.js"></script>
 
 </body>

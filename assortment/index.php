@@ -182,9 +182,14 @@
     $connect->close();
     ?>
 
-    <div id="section-title">
-        <p> </p>
-    </div>
+    <section id="social-links">
+        <a href="https://www.instagram.com/_bonitavita_" target="_blank">
+            <img src="../images/inst-icon.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="mailto:bonitavita03@gmail.com">
+            <img src="../images/mail-icon.png" alt="Mail" class="social-icon">
+        </a>
+    </section>
 
     <script src="assortment_files/script.js"></script>
 

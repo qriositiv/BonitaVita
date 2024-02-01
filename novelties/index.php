@@ -42,66 +42,75 @@
     </div>
     <section id="content">
     <?php
-require_once '../config/connect.php';
+    require_once '../config/connect.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
 
-if ($connect->connect_error) {
-    die("Connection failed: " . $connect->connect_error);
-}
-
-$sql = "SELECT DISTINCT soap_id FROM soap WHERE is_new_soap = 1";
-$result = $connect->query($sql);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $soapId = $row['soap_id'];
-
-        $soapSql = "SELECT * FROM soap WHERE soap_id = $soapId";
-        $soapResult = $connect->query($soapSql);
-        $soapData = $soapResult->fetch_assoc();
-
-        $ingredientSql = "SELECT ingredient FROM ingredients WHERE soap_id = $soapId";
-        $ingredientResult = $connect->query($ingredientSql);
-        $ingredients = [];
-        while ($ingredientRow = $ingredientResult->fetch_assoc()) {
-            $ingredients[] = $ingredientRow['ingredient'];
-        }
-
-        $categorySql = "SELECT category FROM category WHERE soap_id = $soapId";
-        $categoryResult = $connect->query($categorySql);
-        $categories = [];
-        while ($categoryRow = $categoryResult->fetch_assoc()) {
-            $categories[] = $categoryRow['category'];
-        }
-
-        echo "
-            <div id=\"soap_$soapId\">
-                <div>
-                    <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
-                </div>
-                <div>
-                    <p><b>Номер: </b>{$soapData['soap_id']}</p>
-                    <p><b>Название: </b>{$soapData['soap_name']}</p>
-                    <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
-                    <p><b>Вес: </b>{$soapData['soap_weight']} g</p>
-                </div>
-                
-                <div>
-                    <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
-                </div>
-                <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
-            </div>
-        ";
+    if ($connect->connect_error) {
+        die("Connection failed: " . $connect->connect_error);
     }
-} else {
-    echo "Новинок не найдено";
-}
 
-$connect->close();
-?>
+    $sql = "SELECT DISTINCT soap_id FROM soap WHERE is_new_soap = 1";
+    $result = $connect->query($sql);
 
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $soapId = $row['soap_id'];
+
+            $soapSql = "SELECT * FROM soap WHERE soap_id = $soapId";
+            $soapResult = $connect->query($soapSql);
+            $soapData = $soapResult->fetch_assoc();
+
+            $ingredientSql = "SELECT ingredient FROM ingredients WHERE soap_id = $soapId";
+            $ingredientResult = $connect->query($ingredientSql);
+            $ingredients = [];
+            while ($ingredientRow = $ingredientResult->fetch_assoc()) {
+                $ingredients[] = $ingredientRow['ingredient'];
+            }
+
+            $categorySql = "SELECT category FROM category WHERE soap_id = $soapId";
+            $categoryResult = $connect->query($categorySql);
+            $categories = [];
+            while ($categoryRow = $categoryResult->fetch_assoc()) {
+                $categories[] = $categoryRow['category'];
+            }
+
+            echo "
+                <div id=\"soap_$soapId\">
+                    <div>
+                        <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
+                    </div>
+                    <div>
+                        <p><b>Номер: </b>{$soapData['soap_id']}</p>
+                        <p><b>Название: </b>{$soapData['soap_name']}</p>
+                        <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
+                        <p><b>Вес: </b>{$soapData['soap_weight']} g</p>
+                    </div>
+                    
+                    <div>
+                        <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
+                    </div>
+                    <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
+                </div>
+            ";
+        }
+    } else {
+        echo "Новинок не найдено";
+    }
+
+    $connect->close();
+    ?>
+
+    </section>
+
+    <section id="social-links">
+        <a href="https://www.instagram.com/_bonitavita_" target="_blank">
+            <img src="../images/inst-icon.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="mailto:bonitavita03@gmail.com">
+            <img src="../images/mail-icon.png" alt="Mail" class="social-icon">
+        </a>
     </section>
 
     <script src="novelties_files/script.js"></script>

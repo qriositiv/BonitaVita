@@ -152,6 +152,20 @@ li:last-child a {
 
 
 
+#social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
 @media only screen and (max-width: 756px) {
     body::after {
         content: none;
