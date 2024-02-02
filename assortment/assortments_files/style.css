@@ -93,6 +93,41 @@ li:last-child a {
     display: none;
 }
 
+.language-switch {
+    position: relative;
+    float: right;
+    margin-right: 20px;
+}
+
+.language-switch a {
+    display: inline-block;
+}
+
+.language-switch img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.language-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.language-menu li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.language-menu li:hover {
+    background-color: #333;
+}
+
 
 
 #content {
@@ -166,7 +201,7 @@ li:last-child a {
     margin-left: 20px;
 }
 
-@media only screen and (max-width: 756px) {
+@media only screen and (max-width: 768px) {
     body::after {
         content: none;
     }

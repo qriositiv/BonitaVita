@@ -19,20 +19,35 @@
             <div class="desktop-menu">
                 <ul>
                     <li><a href="../">Главная</a></li>     
-                    <li><a href="">Новинки</a></li>
-                    <li><a href="../assortment">Ассортимент</a></li>
+                    <li><a href="../novelties/">Новинки</a></li>
+                    <li><a href="../assortment/">Ассортимент</a></li>
                     <li><a href="../create/">Создать мыло</a></li>
                     <li><a href="../contacts/">Контакты</a></li>
+                    <li class="language-switch">
+                        <a onclick="toggleLanguageMenu()">
+                            <img src="../images/lang-icon.png" alt="Language">
+                        </a>
+                        <ul class="language-menu" id="language-menu">
+                            <li><a href="../ru/">Русский</a></li>
+                            <li><a href="../lt/">Lietuvių</a></li>
+                            <li><a href="../en/">English</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="mobile-menu">
                 <button id="mobile-menu-button">&#9776; Меню</button>
                 <ul>
                     <li><a href="../">Главная</a></li>     
-                    <li><a href="">Новинки</a></li>
-                    <li><a href="../assortment">Ассортимент</a></li>
+                    <li><a href="../novelties/">Новинки</a></li>
+                    <li><a href="../assortment/">Ассортимент</a></li>
                     <li><a href="../create/">Создать мыло</a></li>
                     <li><a href="../contacts/">Контакты</a></li>
+                    <li>
+                        <a href="../ru/" style="margin-right: 10px;">RU</a>
+                        <a href="../lt/" style="margin-right: 10px;">LT</a>
+                        <a href="../en/" style="margin-right: 10px;">EN</a>
+                    </li>                    
                 </ul>
             </div>
         </nav>
@@ -112,6 +127,13 @@
     <script>
         function redirectToSoap(soapId) {
             window.location.href = '../soap.php?soapId=' + soapId;
+        }
+    </script>
+
+    <script>
+        function toggleLanguageMenu() {
+            var languageMenu = document.getElementById("language-menu");
+            languageMenu.style.display = (languageMenu.style.display === "block") ? "none" : "block";
         }
     </script>
 

@@ -134,5 +134,12 @@
         });
     </script>
 
+    <script>
+        function toggleLanguageMenu() {
+            var languageMenu = document.getElementById("language-menu");
+            languageMenu.style.display = (languageMenu.style.display === "block") ? "none" : "block";
+        }
+    </script>
+
 </body>
 </html>

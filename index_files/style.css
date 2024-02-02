@@ -82,13 +82,21 @@ li:last-child a {
 }
 
 #mobile-menu-button {
+    display: none; 
+}
+
+.desktop-menu {
+    display: flex;
+}
+
+.mobile-menu {
     display: none;
 }
 
 .language-switch {
     position: relative;
     float: right;
-    margin-right: 20px; /* Adjust the margin as needed */
+    margin-right: 20px;
 }
 
 .language-switch a {
@@ -96,16 +104,16 @@ li:last-child a {
 }
 
 .language-switch img {
-    width: 20px; /* Adjust the width as needed */
-    height: 20px; /* Adjust the height as needed */
-    border-radius: 50%; /* Optional: make it a circle */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
 
 .language-menu {
     display: none;
     position: absolute;
-    right: 0; /* Position the language menu to the right */
-    top: 100%; /* Position it below the icon */
+    right: 0;
+    top: 100%;
     background-color: #333;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1;
@@ -179,7 +187,7 @@ img {
     margin-left: 20px;
 }
 
-@media only screen and (max-width: 756px) {
+@media only screen and (max-width: 768px) {
     body::after {
         content: none;
     }
