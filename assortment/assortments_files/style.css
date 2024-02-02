@@ -1,8 +1,9 @@
 body {
-    background-image: url('../../images/background/background2.jpg');
+    background-image: url('../../images/background/buble.jpg');
     background-size: cover;
+    background-size: 1000px 1000px;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     font-family: 'Comfortaa', cursive;
     margin: 0;
 }
