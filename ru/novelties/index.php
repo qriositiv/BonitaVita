@@ -10,7 +10,7 @@
     <title>BonitaVita</title>
 </head>
 <body>    
-<header id="menu">
+    <header id="menu">
         <div class="logo">
             <img src="../../images/logo.png" alt="Logo">
             <div class="site-info">

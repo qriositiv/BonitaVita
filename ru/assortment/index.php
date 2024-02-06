@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/logo.png" type="logo">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
-    <link rel="stylesheet" href="assortment_files/style.css">
+    <link rel="stylesheet" href="../../files/style.css">
+    <link rel="stylesheet" href="../../files/assortment_files/style.css">
     <title>BonitaVita</title>
 </head>
 <body>    
     <header id="menu">
         <div class="logo">
-            <img src="../images/logo.png" alt="Logo">
+            <img src="../../images/logo.png" alt="Logo">
             <div class="site-info">
                 <p>BonitaVita</p>
             </div>
@@ -25,12 +27,12 @@
                     <li><a href="../contacts/">Контакты</a></li>
                     <li class="language-switch">
                         <a onclick="toggleLanguageMenu()">
-                            <img src="../images/lang-icon.png" alt="Language">
+                            <img src="../../images/lang-icon.png" alt="Language">
                         </a>
                         <ul class="language-menu" id="language-menu">
-                            <li><a href="../ru/">Русский</a></li>
-                            <li><a href="../lt/">Lietuvių</a></li>
-                            <li><a href="../en/">English</a></li>
+                            <li><a href="../../ru/assortment/">Русский</a></li>
+                            <li><a href="../../lt/assortment/">Lietuvių</a></li>
+                            <li><a href="../../en/assortment/">English</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -44,9 +46,9 @@
                     <li><a href="../create/">Создать мыло</a></li>
                     <li><a href="../contacts/">Контакты</a></li>
                     <li>
-                        <a href="../ru/" style="margin-right: 10px;">RU</a>
-                        <a href="../lt/" style="margin-right: 10px;">LT</a>
-                        <a href="../en/" style="margin-right: 10px;">EN</a>
+                        <a href="../../ru/assortment/" style="margin-right: 10px;">RU</a>
+                        <a href="../../lt/assortment/" style="margin-right: 10px;">LT</a>
+                        <a href="../../en/assortment/" style="margin-right: 10px;">EN</a>
                     </li>                    
                 </ul>
             </div>
@@ -58,9 +60,12 @@
     <div id="section-title">
         <p>Фавориты</p>
     </div>
+
+    <!-- Main content section begin. -->
+
     <section id="content">
     <?php
-        require '../config/connect.php';
+        require '../../config/connect.php';
 
         error_reporting(E_ALL);
         ini_set('display_errors', 1);    
@@ -80,49 +85,29 @@
                 $soapResult = $connect->query($soapSql);
                 $soapData = $soapResult->fetch_assoc();
 
-                $ingredientSql = "SELECT ingredient FROM ingredients WHERE soap_id = $soapId";
-                $ingredientResult = $connect->query($ingredientSql);
-                $ingredients = [];
-                while ($ingredientRow = $ingredientResult->fetch_assoc()) {
-                    $ingredients[] = $ingredientRow['ingredient'];
-                }
-
-                $categorySql = "SELECT category FROM category WHERE soap_id = $soapId";
-                $categoryResult = $connect->query($categorySql);
-                $categories = [];
-                while ($categoryRow = $categoryResult->fetch_assoc()) {
-                    $categories[] = $categoryRow['category'];
-                }
-
                 echo "
-                        <div id=\"soap_$soapId\">
-                            <div>
-                                <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
-                            </div>
-                            <div>
-                                <p><b>Номер: </b>{$soapData['soap_id']}</p>
-                                <p><b>Название: </b>{$soapData['soap_name']}</p>
-                                <p><b>Цена: </b>{$soapData['soap_cost']}€</p>
-                                <p><b>Вес: </b>{$soapData['soap_weight']} g</p>
-                            </div>
-                            
-                            <div>
-                                <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
-                            </div>
-                            <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
+                    <div id=\"soap_$soapId\">
+                        <div>
+                            <img src=\"../../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
                         </div>
-                    ";
+                        <div>
+                            <p><b>{$soapData['soap_name']}</b></p>
+                            <p>{$soapData['soap_cost']}€</p>
+                        </div> 
+                        <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
+                    </div>
+                ";
             }
         } else {
-            echo "Новинок не найдено";
+            echo "Пустой список.";
         }
 
         $connect->close();
-        ?>
+    ?>
     </section>
 
     <?php
-    require '../config/connect.php';
+    require '../../config/connect.php';
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
@@ -131,82 +116,76 @@
         die("Connection failed: " . $connect->connect_error);
     }
 
-    $sqlCategories = "SELECT DISTINCT category FROM category";
+    $sqlCategories = "SELECT DISTINCT category_id, category_name FROM ru_categories";
     $resultCategories = $connect->query($sqlCategories);
 
-    if ($resultCategories->num_rows > 0) {
+    if ($resultCategories) {  // Check if the query was successful
         while ($rowCategory = $resultCategories->fetch_assoc()) {
-            $category = $rowCategory["category"];
+            $categoryId = $rowCategory["category_id"];
+            $categoryName = $rowCategory["category_name"];
             echo '<div id="section-title">';
-            echo '<p>' . $category . '</p>';
+            echo '<p>' . $categoryName . '</p>';
             echo '</div>';
 
-            $sqlSoaps = "SELECT DISTINCT s.soap_id
-                FROM soap s
-                JOIN category c ON s.soap_id = c.soap_id
-                WHERE c.category = '$category'";
+            $sqlSoaps = "SELECT s.soap_id
+                FROM soap_categories sc
+                JOIN soap s ON sc.soap_id = s.soap_id
+                JOIN ru_categories c ON sc.category_id = c.category_id
+                WHERE c.category_id = '$categoryId'";
 
             $resultSoaps = $connect->query($sqlSoaps);
 
-            if ($resultSoaps->num_rows > 0) {
-                echo '<section id="content">';
-                while ($rowSoap = $resultSoaps->fetch_assoc()) {
-                    $soapId = $rowSoap['soap_id'];
+            if ($resultSoaps) {
+                if ($resultSoaps->num_rows > 0) {
+                    echo '<section id="content">';
+                    while ($rowSoap = $resultSoaps->fetch_assoc()) {
+                        $soapId = $rowSoap['soap_id'];
 
-                    $soapSql = "SELECT * FROM soap WHERE soap_id = $soapId";
-                    $soapResult = $connect->query($soapSql);
-                    $soapData = $soapResult->fetch_assoc();
+                        $soapSql = "SELECT * FROM soap WHERE soap_id = $soapId";
+                        $soapResult = $connect->query($soapSql);
+                        $soapData = $soapResult->fetch_assoc();
 
-                    $ingredientSql = "SELECT ingredient FROM ingredients WHERE soap_id = $soapId";
-                    $ingredientResult = $connect->query($ingredientSql);
-                    $ingredients = [];
-                    while ($ingredientRow = $ingredientResult->fetch_assoc()) {
-                        $ingredients[] = $ingredientRow['ingredient'];
-                    }
+                        echo "
+                            <div id=\"soap_$soapId\">
+                                <div>
+                                    <img src=\"../../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
+                                </div>
+                                <div>
+                                    <p><b>{$soapData['soap_name']}</b></p>
+                                    <p>{$soapData['soap_cost']}€</p>
+                                </div>
 
-                    $categorySql = "SELECT category FROM category WHERE soap_id = $soapId";
-                    $categoryResult = $connect->query($categorySql);
-                    $categories = [];
-                    while ($categoryRow = $categoryResult->fetch_assoc()) {
-                        $categories[] = $categoryRow['category'];
-                    }
-
-                    echo "
-                        <div id=\"soap_$soapId\">
-                            <div>
-                                <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
+                                <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
                             </div>
-                            <div>
-                                <p><b>{$soapData['soap_name']}</b></p>
-                                <p>{$soapData['soap_cost']}€</p>
-                            </div>
-
-                            <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
-                        </div>
-                    ";
+                        ";
+                    }
+                    echo '</section>';
+                } else {
+                    echo "Категория не содержит товаров.";
                 }
-                echo '</section>';
             } else {
-                echo "Новинок не найдено";
+                echo "Ошибка запроса: " . mysqli_error($connect);
             }
         }
     } else {
-        echo "0 results";
+        echo "Ошибка запроса: " . mysqli_error($connect);
     }
 
     $connect->close();
     ?>
 
+    <!-- Main content section end. -->
+
     <section id="social-links">
         <a href="https://www.instagram.com/_bonitavita_" target="_blank">
-            <img src="../images/inst-icon.png" alt="Instagram" class="social-icon">
+            <img src="../../images/inst-icon.png" alt="Instagram" class="social-icon">
         </a>
         <a href="mailto:bonitavita03@gmail.com">
-            <img src="../images/mail-icon.png" alt="Mail" class="social-icon">
+            <img src="../../images/mail-icon.png" alt="Mail" class="social-icon">
         </a>
     </section>
 
-    <script src="assortment_files/script.js"></script>
+    <script src="../../files/script.js"></script>
 
     <script>
         function redirectToSoap(soapId) {
@@ -220,6 +199,5 @@
             languageMenu.style.display = (languageMenu.style.display === "block") ? "none" : "block";
         }
     </script>
-
 </body>
 </html>
