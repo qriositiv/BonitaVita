@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/logo.png" type="logo">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
-    <link rel="stylesheet" href="novelties_files/style.css">
+    <link rel="stylesheet" href="../../files/style.css">
+    <link rel="stylesheet" href="../../files/novelties_files/style.css">
     <title>BonitaVita</title>
 </head>
 <body>    
 <header id="menu">
         <div class="logo">
-            <img src="../images/logo.png" alt="Logo">
+            <img src="../../images/logo.png" alt="Logo">
             <div class="site-info">
                 <p>BonitaVita</p>
             </div>
@@ -25,12 +27,12 @@
                     <li><a href="../contacts/">Контакты</a></li>
                     <li class="language-switch">
                         <a onclick="toggleLanguageMenu()">
-                            <img src="../images/lang-icon.png" alt="Language">
+                            <img src="../../images/lang-icon.png" alt="Language">
                         </a>
                         <ul class="language-menu" id="language-menu">
-                            <li><a href="../ru/">Русский</a></li>
-                            <li><a href="../lt/">Lietuvių</a></li>
-                            <li><a href="../en/">English</a></li>
+                            <li><a href="../../ru/novelties/">Русский</a></li>
+                            <li><a href="../../lt/novelties/">Lietuvių</a></li>
+                            <li><a href="../../en/novelties/">English</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -44,9 +46,9 @@
                     <li><a href="../create/">Создать мыло</a></li>
                     <li><a href="../contacts/">Контакты</a></li>
                     <li>
-                        <a href="../ru/" style="margin-right: 10px;">RU</a>
-                        <a href="../lt/" style="margin-right: 10px;">LT</a>
-                        <a href="../en/" style="margin-right: 10px;">EN</a>
+                        <a href="../ru/novelties/" style="margin-right: 10px;">RU</a>
+                        <a href="../lt/novelties/" style="margin-right: 10px;">LT</a>
+                        <a href="../en/novelties/" style="margin-right: 10px;">EN</a>
                     </li>                    
                 </ul>
             </div>
@@ -55,9 +57,13 @@
     <div id="text-box">
         <p>Новинки</p>
     </div>
+
+    <!-- Main content section begin. -->
+
     <section id="content">
+    
     <?php
-    require_once '../config/connect.php';
+    require_once '../../config/connect.php';
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
@@ -77,24 +83,10 @@
             $soapResult = $connect->query($soapSql);
             $soapData = $soapResult->fetch_assoc();
 
-            $ingredientSql = "SELECT ingredient FROM ingredients WHERE soap_id = $soapId";
-            $ingredientResult = $connect->query($ingredientSql);
-            $ingredients = [];
-            while ($ingredientRow = $ingredientResult->fetch_assoc()) {
-                $ingredients[] = $ingredientRow['ingredient'];
-            }
-
-            $categorySql = "SELECT category FROM category WHERE soap_id = $soapId";
-            $categoryResult = $connect->query($categorySql);
-            $categories = [];
-            while ($categoryRow = $categoryResult->fetch_assoc()) {
-                $categories[] = $categoryRow['category'];
-            }
-
             echo "
                 <div id=\"soap_$soapId\">
                     <div>
-                        <img src=\"../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
+                        <img src=\"../../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
                     </div>
                     <div>
                         <p><b>{$soapData['soap_name']}</b></p>
@@ -113,16 +105,18 @@
 
     </section>
 
+    <!-- Main content section end. -->
+
     <section id="social-links">
         <a href="https://www.instagram.com/_bonitavita_" target="_blank">
-            <img src="../images/inst-icon.png" alt="Instagram" class="social-icon">
+            <img src="../../images/inst-icon.png" alt="Instagram" class="social-icon">
         </a>
         <a href="mailto:bonitavita03@gmail.com">
-            <img src="../images/mail-icon.png" alt="Mail" class="social-icon">
+            <img src="../../images/mail-icon.png" alt="Mail" class="social-icon">
         </a>
     </section>
 
-    <script src="novelties_files/script.js"></script>
+    <script src="../../files/script.js"></script>
 
     <script>
         function redirectToSoap(soapId) {
