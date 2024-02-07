@@ -6,7 +6,7 @@
     <link rel="icon" href="../../images/logo.png" type="logo">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
     <link rel="stylesheet" href="../../files/style.css">
-    <link rel="stylesheet" href="../../files/create_files/style.css">
+    <link rel="stylesheet" href="../../files/index_files/style.css">
     <title>BonitaVita</title>
 </head>
 <body>    
@@ -30,9 +30,9 @@
                             <img src="../../images/lang-icon.png" alt="Language">
                         </a>
                         <ul class="language-menu" id="language-menu">
-                            <li><a href="../../ru/">Русский</a></li>
-                            <li><a href="../../lt/">Lietuvių</a></li>
-                            <li><a href="../../en/">English</a></li>
+                            <li><a href="../../ru/create/">Русский</a></li>
+                            <li><a href="../../lt/create/">Lietuvių</a></li>
+                            <li><a href="../../en/create/">English</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -46,9 +46,9 @@
                     <li><a href="../create/">Создать мыло</a></li>
                     <li><a href="../contacts/">Контакты</a></li>
                     <li>
-                        <a href="../../ru/" style="margin-right: 10px;">RU</a>
-                        <a href="../../lt/" style="margin-right: 10px;">LT</a>
-                        <a href="../../en/" style="margin-right: 10px;">EN</a>
+                        <a href="../../ru/create/" style="margin-right: 10px;">RU</a>
+                        <a href="../../lt/create/" style="margin-right: 10px;">LT</a>
+                        <a href="../../en/create/" style="margin-right: 10px;">EN</a>
                     </li>                    
                 </ul>
             </div>
@@ -61,7 +61,8 @@
     <!-- Main content section begin. -->
 
     <section id="content">
-        <p>Эта функция в данный момент только разрабатывается. Приносим свои извинения 🙏</p>
+        <p>Эта функция в данный момент только разрабатывается 🛠️</p>
+        <p>Но можно обсудить свои фантастические идеи по Почте ✉️ <a href="mailto:info@bonitavita.lt">info@bonitavita.lt</a> или по Телефону 📞 <a href="tel:+123456789">+37064700750</a></p>
         <!-- <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p> -->
     </section>
 

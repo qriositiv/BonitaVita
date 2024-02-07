@@ -33,16 +33,6 @@ body {
     margin-bottom: -15px;
 }
 
-#content a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-#content a:hover {
-    color: #2980b9;
-    text-decoration: underline;
-}
-
 
 
 @media only screen and (max-width: 768px) {

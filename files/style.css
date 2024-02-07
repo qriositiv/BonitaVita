@@ -129,6 +129,16 @@ li:last-child a {
     background-color: #333;
 }
 
+#content a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+#content a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
 
 
 /* Page Bottom */

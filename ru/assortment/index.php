@@ -74,7 +74,7 @@
             die("Connection failed: " . $connect->connect_error);
         }
 
-        $sql = "SELECT DISTINCT soap_id FROM soap";
+        $sql = "SELECT DISTINCT soap_id FROM soap ORDER BY soap_id DESC";
         $result = $connect->query($sql);
 
         if ($result->num_rows > 0) {
@@ -131,7 +131,8 @@
                 FROM soap_categories sc
                 JOIN soap s ON sc.soap_id = s.soap_id
                 JOIN ru_categories c ON sc.category_id = c.category_id
-                WHERE c.category_id = '$categoryId'";
+                WHERE c.category_id = '$categoryId'
+                ORDER BY soap_id DESC";
 
             $resultSoaps = $connect->query($sqlSoaps);
 
