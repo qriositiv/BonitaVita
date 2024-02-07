@@ -72,7 +72,10 @@
         die("Connection failed: " . $connect->connect_error);
     }
 
-    $sql = "SELECT DISTINCT soap_id FROM soap WHERE is_new_soap = 1";
+    $sql = "SELECT DISTINCT soap_id
+        FROM soap
+        WHERE is_new_soap = 1
+        ORDER BY soap_id DESC";
     $result = $connect->query($sql);
 
     if ($result->num_rows > 0) {

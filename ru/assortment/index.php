@@ -119,7 +119,7 @@
     $sqlCategories = "SELECT DISTINCT category_id, category_name FROM ru_categories";
     $resultCategories = $connect->query($sqlCategories);
 
-    if ($resultCategories) {  // Check if the query was successful
+    if ($resultCategories) {
         while ($rowCategory = $resultCategories->fetch_assoc()) {
             $categoryId = $rowCategory["category_id"];
             $categoryName = $rowCategory["category_name"];
