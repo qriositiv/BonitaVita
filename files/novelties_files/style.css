@@ -40,8 +40,8 @@ body {
 }
 
 #content button {
-    background-color: rgba(118, 168, 141, 0.92);
-    color: white;
+    background-color: rgba(156, 208, 233, 1);
+    color: black;
     padding: 12px 90px;
     font-size: 28px;
     border: none;
@@ -50,6 +50,12 @@ body {
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+}
+
+#content button.view:hover {
+    background-color: rgba(220, 156, 233, 1);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 
