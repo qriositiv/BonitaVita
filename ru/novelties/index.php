@@ -74,7 +74,7 @@
 
     $sql = "SELECT DISTINCT soap_id
         FROM soap
-        WHERE is_new_soap = 1
+        WHERE is_new_soap = 1 AND is_visible = 1
         ORDER BY soap_id DESC";
     $result = $connect->query($sql);
 

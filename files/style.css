@@ -162,10 +162,6 @@ li:last-child a {
 /* Media View */
 
 @media only screen and (max-width: 768px) {
-    body::after {
-        content: none;
-    }
-
     header {
         padding: 10px;
     }
