@@ -66,8 +66,8 @@ body {
 }
 
 .item.checked {
-    border-color: #e51e92;
-    border-width: 2px;
+    border-color: #4CAF50;
+    border-width: 4px;
 }
 
 .item img {
@@ -104,17 +104,18 @@ body {
     height: 0;
 }
 
-.styled-checkbox:checked + .item-content::before {
-    content: '\2713';
-    font-size: 20px;
-    color: #4CAF50;
+.popup-content {
+    display: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 999; /* Set a higher z-index to make it appear above other elements */
 }
 
-
+.item:hover .popup-content {
+    display: block;
+}
 
 
 @media only screen and (max-width: 768px) {

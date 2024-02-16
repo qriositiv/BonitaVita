@@ -63,6 +63,7 @@
     <section id="content">
         <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p>
 
+        <form action="prove-order.php" method="post">
         <!-- Spoiler A -->
         <div class="spoiler" onclick="toggleSpoiler('spoilerA', 'spoilerTitleA')">
             <h2>Формочки</h2>
@@ -120,8 +121,11 @@
                     if (!$connect) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-            
-                    $query = "SELECT other_id, other_name, other_description FROM ru_other";
+
+                    $query = "SELECT element_id, element_name, element_description
+                            FROM elements
+                            WHERE element_id > 6000
+                            ORDER BY element_id ASC";
                     $result = mysqli_query($connect, $query);
 
                     if (!$result) {
@@ -129,15 +133,17 @@
                     }
 
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<label class="item" id="checkboxLabel' . $row['other_id'] . '">';
-                        echo '<input type="checkbox" class="styled-checkbox" onclick="handleCheckboxClick(event)">';
+                        echo '<label class="item" id="checkboxLabel' . $row['element_id'] . '">';
+                        echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
                         echo '<div class="item-content">';
-                        echo '<img src="../../images/' . $row['other_id'] . '.jpg" alt="Vita Image">';
-                        echo '<p>' . $row['other_name'] . '</p>';
-                        echo '<p>' . $row['other_description'] . '</p>';
+                        echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
+                        echo '<div class="info-icon" style="margin-bottom: -10px;" onclick="showPopup(\'popupContent' . $row['element_id'] . '\')"><img style="max-width: 20px; margin-top: 2px;" src="../../images/info-icon.png" alt="Info Icon"></div><p>' . $row['element_name'] . '</p>';
+                        echo '</div>';
+                        echo '<div class="popup-content" id="popupContent' . $row['element_id'] . '">';
+                        echo '<p>' . $row['element_description'] . '</p>';
                         echo '</div>';
                         echo '</label>';
-                    }
+                    }                                     
 
                     mysqli_close($connect);
                     ?>
@@ -145,10 +151,8 @@
             </div>
         </div>
 
-
-        <form action="prove-order/" method="post">
-            <button type="submit" class="submit">Далее</button>
-        </form>
+        <button type="submit" class="submit">Далее</button>
+    </form>
 
     </section>
 
@@ -189,6 +193,15 @@
 
     if (checkboxLabel) {
         checkboxLabel.classList.toggle('checked', event.target.checked);
+    }
+}
+
+function showPopup(popupId) {
+    var popupContent = document.getElementById(popupId);
+    if (popupContent.style.display === "none" || popupContent.style.display === "") {
+        popupContent.style.display = "block";
+    } else {
+        popupContent.style.display = "none";
     }
 }
     </script>
