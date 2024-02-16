@@ -6,7 +6,7 @@
     <link rel="icon" href="../../images/logo.png" type="logo">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
     <link rel="stylesheet" href="../../files/style.css">
-    <link rel="stylesheet" href="../../files/index_files/style.css">
+    <link rel="stylesheet" href="../../files/create_files/style.css">
     <title>BonitaVita</title>
 </head>
 <body>    
@@ -61,9 +61,71 @@
     <!-- Main content section begin. -->
 
     <section id="content">
-        <p>Эта функция в данный момент только разрабатывается 🛠️</p>
-        <p>Но можно обсудить свои фантастические идеи по Почте ✉️ <a href="mailto:info@bonitavita.lt">info@bonitavita.lt</a> или по Телефону 📞 <a href="tel:+37064700750">+37064700750</a></p>
-        <!-- <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p> -->
+        <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p>
+
+        <!-- Spoiler A -->
+        <div class="spoiler" onclick="toggleSpoiler('spoilerA', 'spoilerTitleA')">
+            <h2>Формочки</h2>
+            <p class="spoiler-title" id="spoilerTitleA" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
+            <div class="spoiler-content" id="spoilerA" style="display: none;">
+                <p>Фотографии формочек</p>
+            </div>
+        </div>
+
+        <!-- Spoiler B -->
+        <div class="spoiler" onclick="toggleSpoiler('spoilerB', 'spoilerTitleB')">
+            <h2>Цвета</h2>
+            <p class="spoiler-title" id="spoilerTitleB" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
+            <div class="spoiler-content" id="spoilerB" style="display: none;">
+                <p>Цвета</p>
+            </div>
+        </div>
+
+        <!-- Spoiler C -->
+        <div class="spoiler" onclick="toggleSpoiler('spoilerC', 'spoilerTitleC')">
+            <h2>Запахи</h2>
+            <p class="spoiler-title" id="spoilerTitleC" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
+            <div class="spoiler-content" id="spoilerC" style="display: none;">
+                <p>Запахи</p>
+            </div>
+        </div>
+
+        <!-- Spoiler D -->
+        <div class="spoiler" onclick="toggleSpoiler('spoilerD', 'spoilerTitleD')">
+            <h2>Травы</h2>
+            <p class="spoiler-title" id="spoilerTitleD" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
+            <div class="spoiler-content" id="spoilerD" style="display: none;">
+                <p>Травы</p>
+            </div>
+        </div>
+
+        <!-- Spoiler E -->
+        <div class="spoiler" onclick="toggleSpoiler('spoilerE', 'spoilerTitleE')">
+            <h2>Масла</h2>
+            <p class="spoiler-title" id="spoilerTitleE" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
+            <div class="spoiler-content" id="spoilerE" style="display: none;">
+                <p>Масла</p>
+            </div>
+        </div>
+
+        <!-- Spoiler F -->
+        <div class="spoiler" onclick="toggleSpoiler('spoilerF', 'spoilerTitleF')">
+    <h2>Дополнительно</h2>
+    <p class="spoiler-title" id="spoilerTitleF" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
+    <div class="spoiler-content" id="spoilerF" style="display: none;">
+        <label class="item" id="checkboxLabel">
+            <input type="checkbox" onclick="handleCheckboxClick(event)">
+            <img src="../../images/Vita.jpg" alt="Vita Image">
+            <p>title</p>
+            <p>description</p>
+        </label>
+    </div>
+</div>
+
+        <form action="prove-order/" method="post">
+            <button type="submit" class="submit">Далее</button>
+        </form>
+
     </section>
 
     <!-- Main content section end. -->
@@ -81,9 +143,36 @@
 
     <script>
         function toggleLanguageMenu() {
-            var languageMenu = document.getElementById("language-menu");
-            languageMenu.style.display = (languageMenu.style.display === "block") ? "none" : "block";
+        var languageMenu = document.getElementById("language-menu");
+        languageMenu.style.display = (languageMenu.style.display === "block") ? "none" : "block";
+    }
+
+    function toggleSpoiler(spoilerId, spoilerTitleId) {
+        var spoiler = document.getElementById(spoilerId);
+        var spoilerTitle = document.getElementById(spoilerTitleId);
+
+        if (spoiler.style.display === "none") {
+            spoiler.style.display = "block";
+            spoilerTitle.innerHTML = "Клик, чтобы закрыть";
+        } else {
+            spoiler.style.display = "none";
+            spoilerTitle.innerHTML = "Клик, чтобы открыть";
         }
+    }
+
+    function handleCheckboxClick(event) {
+    var checkboxLabel = document.getElementById('checkboxLabel');
+    var checkbox = checkboxLabel.querySelector('input[type="checkbox"]');
+
+    // Check if the click event originated from the checkbox
+    if (event.target === checkbox) {
+        // Toggle the 'checked' class on the label when the checkbox is clicked
+        checkboxLabel.classList.toggle('checked', checkbox.checked);
+    } else {
+        // Stop propagation for non-checkbox clicks
+        event.stopPropagation();
+    }
+}
     </script>
 
 </body>
