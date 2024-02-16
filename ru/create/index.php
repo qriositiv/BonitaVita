@@ -110,17 +110,41 @@
 
         <!-- Spoiler F -->
         <div class="spoiler" onclick="toggleSpoiler('spoilerF', 'spoilerTitleF')">
-    <h2>Дополнительно</h2>
-    <p class="spoiler-title" id="spoilerTitleF" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
-    <div class="spoiler-content" id="spoilerF" style="display: none;">
-        <label class="item" id="checkboxLabel">
-            <input type="checkbox" onclick="handleCheckboxClick(event)">
-            <img src="../../images/Vita.jpg" alt="Vita Image">
-            <p>title</p>
-            <p>description</p>
-        </label>
-    </div>
-</div>
+            <h2>Дополнительно</h2>
+            <p class="spoiler-title" id="spoilerTitleF" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
+            <div class="spoiler-content" id="spoilerF" style="display: none;">
+                <div class="image-container">
+                    <?php
+                    require('../../config/second-connect.php');
+
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+            
+                    $query = "SELECT other_id, other_name, other_description FROM ru_other";
+                    $result = mysqli_query($connect, $query);
+
+                    if (!$result) {
+                        die("Query failed: " . mysqli_error($connect));
+                    }
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<label class="item" id="checkboxLabel' . $row['other_id'] . '">';
+                        echo '<input type="checkbox" class="styled-checkbox" onclick="handleCheckboxClick(event)">';
+                        echo '<div class="item-content">';
+                        echo '<img src="../../images/' . $row['other_id'] . '.jpg" alt="Vita Image">';
+                        echo '<p>' . $row['other_name'] . '</p>';
+                        echo '<p>' . $row['other_description'] . '</p>';
+                        echo '</div>';
+                        echo '</label>';
+                    }
+
+                    mysqli_close($connect);
+                    ?>
+                </div>
+            </div>
+        </div>
+
 
         <form action="prove-order/" method="post">
             <button type="submit" class="submit">Далее</button>
@@ -161,16 +185,10 @@
     }
 
     function handleCheckboxClick(event) {
-    var checkboxLabel = document.getElementById('checkboxLabel');
-    var checkbox = checkboxLabel.querySelector('input[type="checkbox"]');
+    var checkboxLabel = event.target.closest('.item');
 
-    // Check if the click event originated from the checkbox
-    if (event.target === checkbox) {
-        // Toggle the 'checked' class on the label when the checkbox is clicked
-        checkboxLabel.classList.toggle('checked', checkbox.checked);
-    } else {
-        // Stop propagation for non-checkbox clicks
-        event.stopPropagation();
+    if (checkboxLabel) {
+        checkboxLabel.classList.toggle('checked', event.target.checked);
     }
 }
     </script>

@@ -53,7 +53,7 @@ CREATE TABLE order_smells (
 );
 
 CREATE TABLE ru_other (
-    other_id VARCHAR(15) PRIMARY KEY,
+    other_id INT PRIMARY KEY,
     other_name VARCHAR(255) NOT NULL,
     other_description VARCHAR(1023)
 );
