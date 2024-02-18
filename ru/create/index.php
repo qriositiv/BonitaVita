@@ -83,13 +83,39 @@
         </div>
 
         <!-- Spoiler C -->
-        <div class="spoiler" onclick="toggleSpoiler('spoilerC', 'spoilerTitleC')">
-            <h2>Запахи</h2>
-            <p class="spoiler-title" id="spoilerTitleC" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
-            <div class="spoiler-content" id="spoilerC" style="display: none;">
-                <p>Запахи</p>
-            </div>
-        </div>
+            <?php
+                    require('../../config/second-connect.php');
+
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $query = "SELECT element_id, element_name, element_description
+                            FROM elements
+                            WHERE element_id > 3000 AND element_id < 4000
+                            ORDER BY element_id ASC";
+                    $result = mysqli_query($connect, $query);
+
+                    if (!$result) {
+                        die("Query failed: " . mysqli_error($connect));
+                    }
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="element"><label class="item" id="checkboxLabel' . $row['element_id'] . '">';
+                        echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
+                        echo '<div class="item-content">';
+                        echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
+                        echo '<p>' . $row['element_name'] . '</p>';
+                        echo '<div class="info-icon" style="margin-bottom: -10px;" onclick="showPopup(\'popupContent' . $row['element_id'] . '\')"><img style="max-width: 20px; margin: 2px auto;" src="../../images/info-icon.png" alt="Info Icon"></div>';
+                        echo '</div>';
+                        echo '<div class="popup-content" id="popupContent' . $row['element_id'] . '">';
+                        echo '<p>' . $row['element_description'] . '</p>';
+                        echo '</div>';
+                        echo '</label></div>';
+                    }                                     
+
+                    mysqli_close($connect);
+                    ?>
 
         <!-- Spoiler D -->
         <div class="spoiler" onclick="toggleSpoiler('spoilerD', 'spoilerTitleD')">
@@ -124,7 +150,7 @@
 
                     $query = "SELECT element_id, element_name, element_description
                             FROM elements
-                            WHERE element_id > 6000
+                            WHERE element_id > 6000 AND element_id < 7000
                             ORDER BY element_id ASC";
                     $result = mysqli_query($connect, $query);
 
@@ -137,7 +163,8 @@
                         echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
                         echo '<div class="item-content">';
                         echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
-                        echo '<div class="info-icon" style="margin-bottom: -10px;" onclick="showPopup(\'popupContent' . $row['element_id'] . '\')"><img style="max-width: 20px; margin-top: 2px;" src="../../images/info-icon.png" alt="Info Icon"></div><p>' . $row['element_name'] . '</p>';
+                        echo '<p>' . $row['element_name'] . '</p>';
+                        echo '<div class="info-icon" style="margin-bottom: -10px;" onclick="showPopup(\'popupContent' . $row['element_id'] . '\')"><img style="max-width: 20px; margin: 2px auto;" src="../../images/info-icon.png" alt="Info Icon"></div>';
                         echo '</div>';
                         echo '<div class="popup-content" id="popupContent' . $row['element_id'] . '">';
                         echo '<p>' . $row['element_description'] . '</p>';
