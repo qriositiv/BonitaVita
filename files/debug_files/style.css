@@ -1,7 +1,7 @@
 body {
-    background-image: url('../../images/background/buble.jpg');
+    background-image: url('../../images/background/background26.jpg');
     background-repeat: repeat;
-    background-size: 750px 750px;
+    background-size: 1536px 2048px;
 }
 
 
@@ -58,14 +58,6 @@ body {
     background-color: #e9dc9c;
     color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-#section-title {
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 48px;
-    color: #fff;
 }
 
 
