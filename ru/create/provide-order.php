@@ -1,35 +1,31 @@
 <?php
+require_once('../../config/second-connect.php');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if selected_others is set and is an array
-    if(isset($_POST['selected_others']) && is_array($_POST['selected_others'])) {
-        // Access the selected other_ids
-        $selectedOthers = $_POST['selected_others'];
-
-        // Echo the selected other_ids
-        echo "Selected other_ids: " . implode(", ", $selectedOthers) . "<br>";
-/*
-        // Loop through each selected other_id
-        foreach ($selectedOthers as $otherId) {
-            echo "Selected other_id: " . $otherId . "<br>";
-        } */   
-    } 
-
-    // Check if the 'message1' input is set
-    if(isset($_POST['message'])) {
-        // Access and echo the message input
+    if (isset($_POST['message']) && isset($_POST['email']) && isset($_POST['phone'])) {
         $message = $_POST['message'];
-        echo "Message: " . $message . "<br>";
-    }
-
-    // Check if the 'phone' input is set
-    if(isset($_POST['phone'])) {
-        // Access and echo the phone input
+        $email = $_POST['email'];
         $phone = $_POST['phone'];
-        echo "Phone: " . $phone . "<br>";
+
+        $insertOrderGeneral = "INSERT INTO order_general (email, telephone, note) VALUES ('$email', '$phone', '$message')";
+        $connect->query($insertOrderGeneral);
+
+        $orderId = $connect->insert_id;
+
+        if (isset($_POST['selected_others']) && is_array($_POST['selected_others'])) {
+            $selectedOthers = $_POST['selected_others'];
+
+            foreach ($selectedOthers as $otherId) {
+                $insertOrderElements = "INSERT INTO order_elements (order_id, element_id) VALUES ('$orderId', '$otherId')";
+                $connect->query($insertOrderElements);
+            }
+        }
+
+        echo "Data inserted successfully!";
+    } else {
+        echo "Incomplete data provided!";
     }
-
-    // You can add more input messages similarly
-
-    // Redirect or perform other actions
 }
+
+$connect->close();
 ?>

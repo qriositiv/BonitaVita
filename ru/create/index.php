@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,9 @@
     <link rel="stylesheet" href="../../files/create_files/style.css">
     <title>BonitaVita</title>
 </head>
-<body>    
-<header id="menu">
+
+<body>
+    <header id="menu">
         <div class="logo">
             <img src="../../images/logo.png" alt="Logo">
             <div class="site-info">
@@ -20,7 +22,7 @@
         <nav>
             <div class="desktop-menu">
                 <ul>
-                    <li><a href="../">Главная</a></li>     
+                    <li><a href="../">Главная</a></li>
                     <li><a href="../novelties/">Новинки</a></li>
                     <li><a href="../assortment/">Ассортимент</a></li>
                     <li><a href="../create/">Создать мыло</a></li>
@@ -40,7 +42,7 @@
             <div class="mobile-menu">
                 <button id="mobile-menu-button">&#9776; Меню</button>
                 <ul>
-                    <li><a href="../">Главная</a></li>     
+                    <li><a href="../">Главная</a></li>
                     <li><a href="../novelties/">Новинки</a></li>
                     <li><a href="../assortment/">Ассортимент</a></li>
                     <li><a href="../create/">Создать мыло</a></li>
@@ -49,7 +51,7 @@
                         <a href="../../ru/create/" style="margin-right: 10px;">RU</a>
                         <a href="../../lt/create/" style="margin-right: 10px;">LT</a>
                         <a href="../../en/create/" style="margin-right: 10px;">EN</a>
-                    </li>                    
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -64,25 +66,76 @@
         <p>Пользуйся своей фантазией по полной! Создай свой собственный дизайн мыла и выбери любые компоненты для него!</p>
 
         <form action="prove-order.php" method="post">
-        <!-- Spoiler A -->
-        <div class="spoiler" onclick="toggleSpoiler('spoilerA', 'spoilerTitleA')">
-            <h2>Формочки</h2>
-            <p class="spoiler-title" id="spoilerTitleA" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
-            <div class="spoiler-content" id="spoilerA" style="display: none;">
-                <p>Фотографии формочек</p>
-            </div>
-        </div>
 
-        <!-- Spoiler B -->
-        <div class="spoiler" onclick="toggleSpoiler('spoilerB', 'spoilerTitleB')">
+            <h2>Формы</h2>
+            <?php
+                    require('../../config/second-connect.php');
+
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $query = "SELECT element_id, element_name, element_description
+                            FROM elements
+                            WHERE element_id > 1000 AND element_id < 2000
+                            ORDER BY element_id ASC";
+                    $result = mysqli_query($connect, $query);
+
+                    if (!$result) {
+                        die("Query failed: " . mysqli_error($connect));
+                    }
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="element" style="display: inline-block; margin: 10px;"><label class="item" id="checkboxLabel' . $row['element_id'] . '">';
+                        echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
+                        echo '<div class="item-content">';
+                        echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
+                        echo '<p>' . $row['element_name'] . '</p>';
+                        echo '<div class="info-icon" style="margin-bottom: -10px;" onclick="showPopup(\'popupContent' . $row['element_id'] . '\')"><img style="max-width: 20px; margin: 2px auto;" src="../../images/info-icon.png" alt="Info Icon"></div>';
+                        echo '</div>';
+                        echo '<div class="popup-content" id="popupContent' . $row['element_id'] . '">';
+                        echo '<p>' . $row['element_description'] . '</p>';
+                        echo '</div>';
+                        echo '</label></div>';
+                    }  
+
+                    mysqli_close($connect);
+                    ?>
             <h2>Цвета</h2>
-            <p class="spoiler-title" id="spoilerTitleB" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
-            <div class="spoiler-content" id="spoilerB" style="display: none;">
-                <p>Цвета</p>
-            </div>
-        </div>
+            <?php
+                    require('../../config/second-connect.php');
 
-        <!-- Spoiler C -->
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $query = "SELECT element_id, element_name, element_description
+                            FROM elements
+                            WHERE element_id > 2000 AND element_id < 3000
+                            ORDER BY element_id ASC";
+                    $result = mysqli_query($connect, $query);
+
+                    if (!$result) {
+                        die("Query failed: " . mysqli_error($connect));
+                    }
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="element" style="display: inline-block; margin: 10px;"><label class="item" id="checkboxLabel' . $row['element_id'] . '">';
+                        echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
+                        echo '<div class="item-content">';
+                        echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
+                        echo '<p>' . $row['element_name'] . '</p>';
+                        echo '<div class="info-icon" style="margin-bottom: -10px;" onclick="showPopup(\'popupContent' . $row['element_id'] . '\')"><img style="max-width: 20px; margin: 2px auto;" src="../../images/info-icon.png" alt="Info Icon"></div>';
+                        echo '</div>';
+                        echo '<div class="popup-content" id="popupContent' . $row['element_id'] . '">';
+                        echo '<p>' . $row['element_description'] . '</p>';
+                        echo '</div>';
+                        echo '</label></div>';
+                    }  
+
+                    mysqli_close($connect);
+                    ?>
+            <h2>Запахи</h2>
             <?php
                     require('../../config/second-connect.php');
 
@@ -101,7 +154,7 @@
                     }
 
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<div class="element"><label class="item" id="checkboxLabel' . $row['element_id'] . '">';
+                        echo '<div class="element" style="display: inline-block; margin: 10px;"><label class="item" id="checkboxLabel' . $row['element_id'] . '">';
                         echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
                         echo '<div class="item-content">';
                         echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
@@ -112,36 +165,81 @@
                         echo '<p>' . $row['element_description'] . '</p>';
                         echo '</div>';
                         echo '</label></div>';
-                    }                                     
+                    }  
 
                     mysqli_close($connect);
                     ?>
 
-        <!-- Spoiler D -->
-        <div class="spoiler" onclick="toggleSpoiler('spoilerD', 'spoilerTitleD')">
             <h2>Травы</h2>
-            <p class="spoiler-title" id="spoilerTitleD" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
-            <div class="spoiler-content" id="spoilerD" style="display: none;">
-                <p>Травы</p>
-            </div>
-        </div>
+            <?php
+                    require('../../config/second-connect.php');
 
-        <!-- Spoiler E -->
-        <div class="spoiler" onclick="toggleSpoiler('spoilerE', 'spoilerTitleE')">
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $query = "SELECT element_id, element_name, element_description
+                            FROM elements
+                            WHERE element_id > 4000 AND element_id < 5000
+                            ORDER BY element_id ASC";
+                    $result = mysqli_query($connect, $query);
+
+                    if (!$result) {
+                        die("Query failed: " . mysqli_error($connect));
+                    }
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="element" style="display: inline-block; margin: 10px;"><label class="item" id="checkboxLabel' . $row['element_id'] . '">';
+                        echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
+                        echo '<div class="item-content">';
+                        echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
+                        echo '<p>' . $row['element_name'] . '</p>';
+                        echo '<div class="info-icon" style="margin-bottom: -10px;" onclick="showPopup(\'popupContent' . $row['element_id'] . '\')"><img style="max-width: 20px; margin: 2px auto;" src="../../images/info-icon.png" alt="Info Icon"></div>';
+                        echo '</div>';
+                        echo '<div class="popup-content" id="popupContent' . $row['element_id'] . '">';
+                        echo '<p>' . $row['element_description'] . '</p>';
+                        echo '</div>';
+                        echo '</label></div>';
+                    }  
+
+                    mysqli_close($connect);
+                    ?>
             <h2>Масла</h2>
-            <p class="spoiler-title" id="spoilerTitleE" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
-            <div class="spoiler-content" id="spoilerE" style="display: none;">
-                <p>Масла</p>
-            </div>
-        </div>
+            <?php
+                    require('../../config/second-connect.php');
 
-        <!-- Spoiler F -->
-        <div class="spoiler" onclick="toggleSpoiler('spoilerF', 'spoilerTitleF')">
-            <h2>Дополнительно</h2>
-            <p class="spoiler-title" id="spoilerTitleF" style="margin-top: -50px; font-size: 24px;">Клик, чтобы открыть</p>
-            <div class="spoiler-content" id="spoilerF" style="display: none;">
-                <div class="image-container">
-                    <?php
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $query = "SELECT element_id, element_name, element_description
+                            FROM elements
+                            WHERE element_id > 5000 AND element_id < 6000
+                            ORDER BY element_id ASC";
+                    $result = mysqli_query($connect, $query);
+
+                    if (!$result) {
+                        die("Query failed: " . mysqli_error($connect));
+                    }
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="element" style="display: inline-block; margin: 10px;"><label class="item" id="checkboxLabel' . $row['element_id'] . '">';
+                        echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
+                        echo '<div class="item-content">';
+                        echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
+                        echo '<p>' . $row['element_name'] . '</p>';
+                        echo '<div class="info-icon" style="margin-bottom: -10px;" onclick="showPopup(\'popupContent' . $row['element_id'] . '\')"><img style="max-width: 20px; margin: 2px auto;" src="../../images/info-icon.png" alt="Info Icon"></div>';
+                        echo '</div>';
+                        echo '<div class="popup-content" id="popupContent' . $row['element_id'] . '">';
+                        echo '<p>' . $row['element_description'] . '</p>';
+                        echo '</div>';
+                        echo '</label></div>';
+                    }  
+
+                    mysqli_close($connect);
+                    ?>
+            <h2>Доролнительно</h2>
+            <?php
                     require('../../config/second-connect.php');
 
                     if (!$connect) {
@@ -159,7 +257,7 @@
                     }
 
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<label class="item" id="checkboxLabel' . $row['element_id'] . '">';
+                        echo '<div class="element" style="display: inline-block; margin: 10px;"><label class="item" id="checkboxLabel' . $row['element_id'] . '">';
                         echo '<input type="checkbox" class="styled-checkbox" name="selected_others[]" value="' . $row['element_id'] . '" onclick="handleCheckboxClick(event)">';
                         echo '<div class="item-content">';
                         echo '<img src="../../images/elements/' . $row['element_id'] . '.jpg" alt="ID' . $row['other_id'] . '">';
@@ -169,15 +267,26 @@
                         echo '<div class="popup-content" id="popupContent' . $row['element_id'] . '">';
                         echo '<p>' . $row['element_description'] . '</p>';
                         echo '</div>';
-                        echo '</label>';
-                    }                                     
+                        echo '</label></div>';
+                    }  
 
                     mysqli_close($connect);
                     ?>
-                </div>
-            </div>
-        </div>
+            <h2>Особые пожелания</h2>
+            <label for="message">Здесь можно написать свои особые пожелания и уточнения. <br> Например: "Более выраженный виноградный аромат"<br></label>
+            <textarea id="message" name="message" autocomplete="off"></textarea>
 
+            <h2>Подтверждение заказа</h2>
+
+            <label for="email">Введите адрес электронной почты <br></label>
+            <input type="text" id="email" name="email" required autocomplete="off"><br><br>
+
+            <label for="phone">Введите номер телефона <br></label>
+            <input type="text" id="phone" name="phone" required autocomplete="off"><br><br>
+
+            <input type="checkbox" id="confirmation" name="confirmation" required>
+            <label for="confirmation">Я подтверждаю свой заказ</label><br><br>
+        
         <button type="submit" class="submit">Далее</button>
     </form>
 
@@ -198,40 +307,41 @@
 
     <script>
         function toggleLanguageMenu() {
-        var languageMenu = document.getElementById("language-menu");
-        languageMenu.style.display = (languageMenu.style.display === "block") ? "none" : "block";
-    }
-
-    function toggleSpoiler(spoilerId, spoilerTitleId) {
-        var spoiler = document.getElementById(spoilerId);
-        var spoilerTitle = document.getElementById(spoilerTitleId);
-
-        if (spoiler.style.display === "none") {
-            spoiler.style.display = "block";
-            spoilerTitle.innerHTML = "Клик, чтобы закрыть";
-        } else {
-            spoiler.style.display = "none";
-            spoilerTitle.innerHTML = "Клик, чтобы открыть";
+            var languageMenu = document.getElementById("language-menu");
+            languageMenu.style.display = (languageMenu.style.display === "block") ? "none" : "block";
         }
-    }
 
-    function handleCheckboxClick(event) {
-    var checkboxLabel = event.target.closest('.item');
+        function toggleSpoiler(spoilerId, spoilerTitleId) {
+            var spoiler = document.getElementById(spoilerId);
+            var spoilerTitle = document.getElementById(spoilerTitleId);
 
-    if (checkboxLabel) {
-        checkboxLabel.classList.toggle('checked', event.target.checked);
-    }
-}
+            if (spoiler.style.display === "none") {
+                spoiler.style.display = "block";
+                spoilerTitle.innerHTML = "Клик, чтобы закрыть";
+            } else {
+                spoiler.style.display = "none";
+                spoilerTitle.innerHTML = "Клик, чтобы открыть";
+            }
+        }
 
-function showPopup(popupId) {
-    var popupContent = document.getElementById(popupId);
-    if (popupContent.style.display === "none" || popupContent.style.display === "") {
-        popupContent.style.display = "block";
-    } else {
-        popupContent.style.display = "none";
-    }
-}
+        function handleCheckboxClick(event) {
+            var checkboxLabel = event.target.closest('.item');
+
+            if (checkboxLabel) {
+                checkboxLabel.classList.toggle('checked', event.target.checked);
+            }
+        }
+
+        function showPopup(popupId) {
+            var popupContent = document.getElementById(popupId);
+            if (popupContent.style.display === "none" || popupContent.style.display === "") {
+                popupContent.style.display = "block";
+            } else {
+                popupContent.style.display = "none";
+            }
+        }
     </script>
 
 </body>
+
 </html>

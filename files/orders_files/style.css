@@ -1,0 +1,98 @@
+body {
+    background-image: url('../../images/background/background26.jpg');
+    background-repeat: repeat;
+    background-size: 1536px 2048px;
+}
+
+
+
+#content {
+    text-align: center;
+    padding: 20px;
+    font-size: 22px;
+    line-height: 1.35;
+    margin-top: 150px;
+    background-color: rgba(233, 181, 156, 0.92);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#content > div {
+    margin: 30px;
+    width: 40%;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#content img {
+    width: 25%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+#content > div > p {
+    margin: 10px;
+    padding: 2px;
+}
+
+#content button {
+    background-color: rgba(118, 168, 141, 0.92);
+    color: white;
+    padding: 12px 60px;
+    font-size: 28px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#content button.view:hover {
+    background-color: #e9dc9c;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    #content {
+        font-size: 18px;
+        padding: 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        line-height: 1;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    #content > div {
+        margin: 8px;
+        width: 90%;
+    }
+    
+    #content img {
+        margin-top: 5px;
+        width: 25%;
+        height: auto;
+    }
+
+    #content > div > p {
+        margin: 10px;
+        padding: 0;
+    }
+    
+    #content button {
+        padding: 8px 10px;
+        width: 95%;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+}

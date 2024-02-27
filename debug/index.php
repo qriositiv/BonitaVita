@@ -20,14 +20,18 @@
         <nav>
             <div class="desktop-menu">
                 <ul>
-                    <li><a href="../ru/">Главная</a></li>     
+                    <li><a href="../ru/">BonitaVita.lt</a></li>  
+                    <li><a href="">Каталог</a></li>    
+                    <li><a href="./orders/">Заказы</a></li>   
                     <li><a href="https://va-love.site/">VA-love.site</a></li>
                 </ul>
             </div>
             <div class="mobile-menu">
                 <button id="mobile-menu-button">&#9776; Меню</button>
                 <ul>
-                    <li><a href="../ru/">Главная</a></li>     
+                    <li><a href="../ru/">BonitaVita.lt</a></li>     
+                    <li><a href="">Каталог</a></li>    
+                    <li><a href="./orders/">Заказы</a></li>     
                     <li><a href="https://va-love.site/">VA-love.site</a></li>                 
                 </ul>
             </div>
@@ -92,15 +96,6 @@
     </section>
 
     <!-- Main content section end. -->
-
-    <section id="social-links">
-        <a href="https://www.instagram.com/_bonitavita_" target="_blank">
-            <img src="../../images/inst-icon.png" alt="Instagram" class="social-icon">
-        </a>
-        <a href="mailto:bonitavita03@gmail.com">
-            <img src="../../images/mail-icon.png" alt="Mail" class="social-icon">
-        </a>
-    </section>
 
     <script src="../files/script.js"></script>
 
