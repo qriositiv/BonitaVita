@@ -86,6 +86,10 @@
             $soapResult = $connect->query($soapSql);
             $soapData = $soapResult->fetch_assoc();
 
+            $priceToShow = isset($soapData['soap_sale']) ? $soapData['soap_sale'] : $soapData['soap_cost'];
+            $priceColor = isset($soapData['soap_sale']) ? 'red' : 'black';
+            $displayCost = isset($soapData['soap_sale']) ? "<del style=\"color: black;\">{$soapData['soap_cost']}€</del><b> " : '';
+
             echo "
                 <div id=\"soap_$soapId\">
                     <div>
@@ -93,7 +97,7 @@
                     </div>
                     <div>
                         <p><b>{$soapData['soap_name']}</b></p>
-                        <p>{$soapData['soap_cost']}€</p>
+                        <p>{$displayCost}<span style=\"color: $priceColor;\">{$priceToShow}€</b></span></p>
                     </div>
                     <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
                 </div>

@@ -88,7 +88,8 @@
                 $ingredientSql = "SELECT ri.ingredient_name
                                   FROM soap_ingredients si
                                   JOIN ru_ingredients ri ON si.ingredient_id = ri.ingredient_id
-                                  WHERE si.soap_id = ?";
+                                  WHERE si.soap_id = ?
+                                  ORDER BY ri.ingredient_order ASC";
                 $ingredientStmt = $connect->prepare($ingredientSql);
 
                 if (!$ingredientStmt) {
@@ -139,13 +140,18 @@
                         echo "<img class=\"carousel-image\" src=\"$imagePath\" alt=\"Soap Image\">";
                     }
                 }
+                
+                $priceToShow = isset($soapData['soap_sale']) ? $soapData['soap_sale'] : $soapData['soap_cost'];
+                $priceColor = isset($soapData['soap_sale']) ? 'red' : 'black';
+                $displayCost = isset($soapData['soap_sale']) ? "<del style=\"color: black;\">{$soapData['soap_cost']}€</del><b> " : '';
+
                 echo "</div>
                 <div class=\"product-details\">
-                    <p id=\"cost\"><b>{$soapData['soap_cost']}€</b></p>
+                    <p id=\"cost\">{$displayCost}<span style=\"color: $priceColor;\">{$priceToShow}€</b></span></p>
                     <p><b>Вес: </b>{$soapData['soap_weight']} г</p>
-                    <p><b>Пахнет как: </b>{$smells}</p>
+                    <p><b>Аромат: </b>{$smells}</p>
                     <p><b>Ингредиенты: </b>" . implode(", ", $ingredients) . "</p>
-                    <p><b>Описание: </p>{$description}</p>
+                    <p><b>Описание: </b>{$description}</p>
                     </div>
                 </section>
                 ";

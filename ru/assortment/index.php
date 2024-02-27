@@ -57,12 +57,12 @@
     <div id="text-box">
         <p>Ассортимент</p>
     </div>
-    <div id="section-title">
-        <p>Фавориты</p>
-    </div>
 
     <!-- Main content section begin. -->
 
+    <div id="section-title">
+        <p>Фавориты</p>
+    </div>
     <section id="content">
         <?php
         require '../../config/connect.php';
@@ -88,6 +88,10 @@
                 $soapResult = $connect->query($soapSql);
                 $soapData = $soapResult->fetch_assoc();
 
+                $priceToShow = isset($soapData['soap_sale']) ? $soapData['soap_sale'] : $soapData['soap_cost'];
+                $priceColor = isset($soapData['soap_sale']) ? 'red' : 'black';
+                $displayCost = isset($soapData['soap_sale']) ? "<del style=\"color: black;\">{$soapData['soap_cost']}€</del><b> " : '';
+
                 echo "
                     <div id=\"soap_$soapId\">
                         <div>
@@ -95,8 +99,61 @@
                         </div>
                         <div>
                             <p><b>{$soapData['soap_name']}</b></p>
-                            <p>{$soapData['soap_cost']}€</p>
+                            <p>{$displayCost}<span style=\"color: $priceColor;\">{$priceToShow}€</b></span></p>
                         </div> 
+                        <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
+                    </div>
+                ";
+            }
+        } else {
+            echo "Фаворитов не найдено";
+        }
+
+        $connect->close();
+        ?>
+    </section>
+
+    <div id="section-title">
+        <p>Сезонное мыло</p>
+    </div>
+    <section id="content">
+        <?php
+        require '../../config/connect.php';
+
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+
+        if ($connect->connect_error) {
+            die("Connection failed: " . $connect->connect_error);
+        }
+
+        $sql = "SELECT DISTINCT soap_id
+            FROM soap
+            WHERE soap_sale IS NOT NULL AND is_visible = 1
+            ORDER BY soap_id DESC";
+        $result = $connect->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $soapId = $row['soap_id'];
+    
+                $soapSql = "SELECT * FROM soap WHERE soap_id = $soapId";
+                $soapResult = $connect->query($soapSql);
+                $soapData = $soapResult->fetch_assoc();
+    
+                $priceToShow = isset($soapData['soap_sale']) ? $soapData['soap_sale'] : $soapData['soap_cost'];
+                $priceColor = isset($soapData['soap_sale']) ? 'red' : 'black';
+                $displayCost = isset($soapData['soap_sale']) ? "<del style=\"color: black;\">{$soapData['soap_cost']}€</del><b> " : '';
+    
+                echo "
+                    <div id=\"soap_$soapId\">
+                        <div>
+                            <img src=\"../../images/soap_images/{$soapData['soap_id']}A.jpg\" alt=\"Product Photo\">
+                        </div>
+                        <div>
+                            <p><b>{$soapData['soap_name']}</b></p>
+                            <p>{$displayCost}<span style=\"color: $priceColor;\">{$priceToShow}€</b></span></p>
+                        </div>
                         <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
                     </div>
                 ";
@@ -119,11 +176,12 @@
         die("Connection failed: " . $connect->connect_error);
     }
 
-    $sqlCategories = "SELECT DISTINCT rc.category_id, rc.category_name
+    $sqlCategories = "SELECT DISTINCT rc.category_id, rc.category_name, rc.category_order
         FROM ru_categories rc
         NATURAL JOIN soap_categories sc
         NATURAL JOIN soap s
-        WHERE s.soap_id < 1000;";
+        WHERE s.soap_id < 1000
+        ORDER BY rc.category_order ASC";
     $resultCategories = $connect->query($sqlCategories);
 
     if ($resultCategories) {
@@ -153,6 +211,10 @@
                         $soapResult = $connect->query($soapSql);
                         $soapData = $soapResult->fetch_assoc();
 
+                        $priceToShow = isset($soapData['soap_sale']) ? $soapData['soap_sale'] : $soapData['soap_cost'];
+                        $priceColor = isset($soapData['soap_sale']) ? 'red' : 'black';
+                        $displayCost = isset($soapData['soap_sale']) ? "<del style=\"color: black;\">{$soapData['soap_cost']}€</del><b> " : '';
+
                         echo "
                             <div id=\"soap_$soapId\">
                                 <div>
@@ -160,7 +222,7 @@
                                 </div>
                                 <div>
                                     <p><b>{$soapData['soap_name']}</b></p>
-                                    <p>{$soapData['soap_cost']}€</p>
+                                    <p>{$displayCost}<span style=\"color: $priceColor;\">{$priceToShow}€</b></span></p>
                                 </div>
 
                                 <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
@@ -176,7 +238,7 @@
             }
         }
     } else {
-        echo "Ошибка запроса: " . mysqli_error($connect);
+        echo "Сезонное мыло отсутствует. " . mysqli_error($connect);
     }
 
     $connect->close();

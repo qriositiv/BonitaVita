@@ -6,7 +6,7 @@
     <link rel="icon" href="../images/green-logo.png" type="logo">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
     <link rel="stylesheet" href="../files/style.css">
-    <link rel="stylesheet" href="../files/novelties_files/style.css">
+    <link rel="stylesheet" href="../files/debug_files/style.css">
     <title>BonitaVita Debug</title>
 </head>
 <body>    
@@ -64,6 +64,10 @@
             $soapResult = $connect->query($soapSql);
             $soapData = $soapResult->fetch_assoc();
 
+            $priceToShow = isset($soapData['soap_sale']) ? $soapData['soap_sale'] : $soapData['soap_cost'];
+            $priceColor = isset($soapData['soap_sale']) ? 'red' : 'black';
+            $displayCost = isset($soapData['soap_sale']) ? "<del style=\"color: black;\">{$soapData['soap_cost']}€</del><b> " : '';
+
             echo "
                 <div id=\"soap_$soapId\">
                     <div>
@@ -71,7 +75,7 @@
                     </div>
                     <div>
                         <p><b>{$soapData['soap_name']}</b></p>
-                        <p>{$soapData['soap_cost']}€</p>
+                        <p>{$displayCost}<span style=\"color: $priceColor;\">{$priceToShow}</b>€</span></p>
                     </div>
                     <button class=\"view\" onclick=\"redirectToSoap($soapId)\">Подробнее</button>
                 </div>
@@ -83,6 +87,7 @@
 
     $connect->close();
     ?>
+
 
     </section>
 
@@ -101,7 +106,7 @@
 
     <script>
         function redirectToSoap(soapId) {
-            window.location.href = '../soap.php?soapId=' + soapId;
+            window.location.href = '../ru/soap.php?soapId=' + soapId;
         }
     </script>
 
