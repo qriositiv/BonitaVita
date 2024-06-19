@@ -11,7 +11,12 @@
         </button>
     </div>
     <div class="lg:hidden my-auto">
-        <button class="text-white hover:text-primary-200"><i class="fa-solid fa-globe my-auto"></i></button>
+        <button class="text-white hover:text-primary-200">
+            <div class="flex space-x-1">
+                <i class="fa-solid fa-globe my-auto"></i>
+                <app-language-dropdown></app-language-dropdown>
+            </div>
+        </button>
     </div>
     <div class="flex space-x-6 w-2/3 justify-end my-auto max-lg:hidden">
         <div>
@@ -20,7 +25,7 @@
                 <li><button class="text-white hover:text-primary-200">Ассортимент</button></li>
                 <li><button class="text-white hover:text-primary-200">Создать мыло</button></li>
                 <li><button class="text-white hover:text-primary-200">Контакты</button></li>    
-                <li class="text-white hover:text-primary-200"><i class="fa-solid fa-globe my-auto"></i></li>
+                <li class="text-white hover:text-primary-200"><app-language-dropdown></app-language-dropdown></li>
             </ul>
         </div>
     </div>

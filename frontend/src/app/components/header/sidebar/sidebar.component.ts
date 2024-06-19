@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ClickedOutside } from '../../directives/ClickedOutside.directive';
+import { ClickedOutside } from '../../../directives/ClickedOutside.directive';
 
 @Component({
   selector: 'app-sidebar',

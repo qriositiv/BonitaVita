@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { LanguageDropdownComponent } from './language-dropdown/language-dropdown.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [SidebarComponent],
+  imports: [SidebarComponent, LanguageDropdownComponent],
   templateUrl: './header.component.html',
   animations: [
     trigger('slideInOut', [
