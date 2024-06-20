@@ -15,8 +15,8 @@ module.exports = {
           500: '#e11d48',
           600: '#be123c',
           700: '#9f1239',
-          800: '#881337',
-          900: '#701a35',
+          800: '#FFFDD0',
+          900: '#e9b59ceb',
         },
         secondary: {
           50: '#ecfdf5',
@@ -42,6 +42,7 @@ module.exports = {
           800: '#1a202c',
           900: '#333333',
         },
+        
       },
       fontFamily: {
         comfortaa: ['Comfortaa', 'sans-serif'],
