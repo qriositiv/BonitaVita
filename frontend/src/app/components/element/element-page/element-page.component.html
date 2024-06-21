@@ -1,0 +1,36 @@
+<div class="flex justify-center w-5/6 mx-auto my-4 space-x-10">
+    <div class="w-1/2 flex justify-end">
+        <div class="w-10/12 h-auto">
+            @for (image of soap.images; track $index) {
+                <img class="carousel-image" src="{{ soap.images[$index] }}" alt="Soap Image">
+            <!-- <img class="carousel-image" src="../images/soap_images/1B.jpg" alt="Soap Image">
+            <img class="carousel-image" src="../images/soap_images/1C.jpg" alt="Soap Image"> -->
+            }
+        </div>
+    </div>
+    <div class="w-1/2 space-y-2 text-base">
+        <div>
+            <p class="font-bold text-4xl">{{ soap.name }}</p>
+        </div>
+        <div class="flex space-x-1 text-xl">
+            @if (soap.sale && soap.sale < soap.cost) {
+                <p class="text-red-500 font-semibold">{{ soap.sale | currency:'EUR':'symbol':'1.2-2' }}</p>
+                <p class="text-gray-600 line-through">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
+            } @else {
+                <p class="text-gray-600">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
+            }
+        </div>
+        <div class="flex1">
+            <p><span class="font-bold mr-1">Вес:</span>{{ soap.weight }} г</p>
+        </div>
+        <div class="flex1">
+            <p><span class="font-bold mr-1">Аромат:</span>{{ soap.aroma }}</p>
+        </div>
+        <div class="flex1">
+            <p><span class="font-bold mr-1">Ингредиенты:</span>{{ soap.ingredients }}</p>
+        </div>
+        <div class="flex1">
+            <p><span class="font-bold mr-1">Описание:</span>{{ soap.description }}</p>
+        </div>
+    </div>
+</div>

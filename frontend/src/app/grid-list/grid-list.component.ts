@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementBoxComponent } from '../components/element-box/element-box.component';
+import { ElementBoxComponent } from '../components/element/element-box/element-box.component';
 import { SoapPreview } from '../interfaces/soap.interface';
 
 @Component({
@@ -14,6 +14,7 @@ export class GridListComponent implements OnInit {
   ngOnInit(): void {
     this.soapList = [
       {
+        id: 'crystal',
         image: 'https://bonitavita.lt/images/soap_images/26A.jpg',
         name: 'Crystal',
         cost: 17.00,
@@ -21,27 +22,32 @@ export class GridListComponent implements OnInit {
         tag: 'New'
       },
       {
+        id: '2',
         image: 'https://bonitavita.lt/images/soap_images/15A.jpg',
         name: 'Olive',
         cost: 9.50,
         tag: 'Popular'
       },
       {
+        id: '3',
         image: 'https://bonitavita.lt/images/soap_images/24A.jpg',
         name: 'Twinkle',
         cost: 11.00
       },
       {
+        id: '4',
         image: 'https://bonitavita.lt/images/soap_images/9A.jpg',
         name: 'Aura',
         cost: 11.00
       },
       {
+        id: '5',
         image: 'https://bonitavita.lt/images/soap_images/9A.jpg',
         name: 'Aura',
         cost: 11.00
       },
       {
+        id: '6',
         image: 'https://bonitavita.lt/images/soap_images/9A.jpg',
         name: 'Aura',
         cost: 11.00

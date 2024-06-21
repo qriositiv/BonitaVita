@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { SoapPreview } from '../../interfaces/soap.interface';
+import { SoapPreview } from '../../../interfaces/soap.interface';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-element-box',
@@ -10,4 +11,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ElementBoxComponent {
   @Input() soap!: SoapPreview;
+
+  constructor(private router: Router) {}
+
+  onSoapPageOpen(soapId: string) {
+    this.router.navigate(['soap', soapId])
+  }
 }
