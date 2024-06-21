@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ClickedOutside } from '../../../directives/ClickedOutside.directive';
 
 @Component({
@@ -9,6 +9,7 @@ import { ClickedOutside } from '../../../directives/ClickedOutside.directive';
 })
 export class SidebarComponent{
   dropdownOpen: boolean = false;
+  @Input() menuSections!: string[];
 
   toggleDropdown(): void {
     this.dropdownOpen = !this.dropdownOpen;

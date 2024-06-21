@@ -1,14 +1,14 @@
 <div class="flex text-lg text-nowrap w-full py-3 px-8 bg-dark-900 text-white font-comfortaa">
     <div class="lg:hidden my-auto text-2xl">
-        <app-sidebar></app-sidebar>
+        <app-sidebar [menuSections]="menuSections"></app-sidebar>
     </div>
     <div class="flex max-lg:justify-center max-lg:w-full w-1/3 my-auto">
-        <button class="text-white hover:text-primary-200">
+        <a class="text-white hover:text-primary-200" routerLink="/">
             <div class="flex space-x-3 my-auto">
                 <img src="https://bonitavita.lt/images/logo.png" style="width: 50px; height: auto;" class="" alt="Logo">
                 <span class="my-auto text-2xl">BonitaVita</span>
             </div>
-        </button>
+        </a>
     </div>
     <div class="lg:hidden my-auto">
         <button class="text-white hover:text-primary-200">
@@ -21,10 +21,9 @@
     <div class="flex space-x-6 w-2/3 justify-end my-auto max-lg:hidden">
         <div>
             <ul class="flex space-x-6">
-                <li><button class="text-white hover:text-primary-200">Новинки</button></li>
-                <li><button class="text-white hover:text-primary-200">Ассортимент</button></li>
-                <li><button class="text-white hover:text-primary-200">Создать мыло</button></li>
-                <li><button class="text-white hover:text-primary-200">Контакты</button></li>    
+                @for (section of menuSections; track $index) {
+                    <li><a class="text-white hover:text-primary-200">{{ section }}</a></li>  
+                } 
                 <li class="text-white hover:text-primary-200"><app-language-dropdown></app-language-dropdown></li>
             </ul>
         </div>

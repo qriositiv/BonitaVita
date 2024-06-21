@@ -5,10 +5,9 @@
     <div class="z-50 lg:hidden fixed inset-y-0 left-0 w-64 bg-dark-900 text-white transition-transform duration-300 transform"
       [class.translate-x-0]="dropdownOpen" [class.-translate-x-full]="!dropdownOpen">
       <ul class="px-6 py-1 mt-6 flex flex-col space-y-6 items-start h-full">
-        <li><button class="text-white hover:text-primary-200">Новинки</button></li>
-        <li><button class="text-white hover:text-primary-200">Ассортимент</button></li>
-        <li><button class="text-white hover:text-primary-200">Создать мыло</button></li>
-        <li><button class="text-white hover:text-primary-200">Контакты</button></li>
+        @for (section of menuSections; track $index) {
+          <li><a class="text-white hover:text-primary-200">{{ section }}</a></li>
+        }
       </ul>
     </div>
   </div>
