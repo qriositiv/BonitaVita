@@ -1,16 +1,32 @@
-<div class="w-60 h-96  space-y-2">
+<div class="sm:w-60 w-48h-auto space-y-2">
+    <button>
+        <div class="sm:w-60 sm:h-60 w-48 h-48">
+            <img src="{{ soap.image }}" alt="soap image"/>
+            <div class="z-10 relative sm:bottom-60 bottom-48 flex justify-end">
+                @if (soap.tag) {
+                    <div class="bg-emerald-300 px-1 m-2 text-sm">
+                        {{ soap.tag }}
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="text-center space-y-2">
+            <div>
+                <p class="text-lg font-bold">{{ soap.name }}</p>
+                <div class="flex justify-center space-x-1">
+                    @if (soap.sale && soap.sale < soap.cost) {
+                        <p class="text-red-500 font-semibold">{{ soap.sale | currency:'EUR':'symbol':'1.2-2' }}</p>
+                        <p class="text-gray-600 line-through">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
+                    } @else {
+                        <p class="text-gray-600">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </button>
     <div>
-        <img src="{{ soap.image }}"/>
-    </div>
-    <div class="text-center space-y-2">
-        <div>
-            <p class="text-lg font-bold">{{ soap.name }}</p>
-            <p class="text-gray-500">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
-        </div>
-        <div>
-            <button class="bg-sky-300 p-1 mx-2 w-11/12">
-                Add to favorites ❤️
-            </button>
-        </div>
+        <button class="bg-emerald-500 hover:bg-yellow-300 p-1 w-full">
+            Add to favorites ❤️
+        </button>
     </div>
 </div>

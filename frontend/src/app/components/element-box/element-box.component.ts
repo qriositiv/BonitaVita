@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Soap } from '../../interfaces/soap.interface';
+import { SoapPreview } from '../../interfaces/soap.interface';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   templateUrl: './element-box.component.html'
 })
 export class ElementBoxComponent {
-  @Input() soap!: Soap;
+  @Input() soap!: SoapPreview;
 }
