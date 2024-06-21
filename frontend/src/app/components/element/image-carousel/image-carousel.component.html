@@ -1,0 +1,15 @@
+<div class="relative">
+    @for (image of images; track $index) {
+        @if (currentImageIndex === $index) {
+            <img src="{{ image }}" alt="soap image" class="opacity-100 transition-opacity duration-500"/>
+        }
+    }
+    <div class="absolute top-1/2 w-full flex justify-between transform -translate-y-1/2 pointer-events-none">
+        <button class="border-2 border-white hover:text-xl text-white w-8 h-8 flex items-center justify-center rounded-full pointer-events-auto ml-2" (click)="onPrevImage()">
+            <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="border-2 border-white hover:text-xl text-white w-8 h-8 flex items-center justify-center rounded-full pointer-events-auto mr-2" (click)="onNextImage()">
+            <i class="fa-solid fa-angle-right"></i>
+        </button>
+    </div>
+</div>

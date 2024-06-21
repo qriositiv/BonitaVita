@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Soap } from '../../../interfaces/soap.interface';
 import { CommonModule } from '@angular/common';
+import { ImageCarouselComponent } from '../image-carousel/image-carousel.component';
 
 @Component({
   selector: 'app-element-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ImageCarouselComponent],
   templateUrl: './element-page.component.html'
 })
 export class ElementPageComponent {
