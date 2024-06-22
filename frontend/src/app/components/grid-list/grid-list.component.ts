@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementBoxComponent } from '../components/element/element-box/element-box.component';
-import { SoapPreview } from '../interfaces/soap.interface';
+import { SoapPreview } from '../../interfaces/soap.interface';
+import { ElementBoxComponent } from '../element/element-box/element-box.component';
 
 @Component({
   selector: 'app-grid-list',
