@@ -1,19 +1,19 @@
 <div class="lg:flex justify-center w-5/6 mx-auto my-4 space-x-10">
-    <div class="lg:w-1/2 w-full flex justify-end">
+    <div class="lg:w-1/2 w-full flex items-center justify-end">
         <div class="w-10/12 h-auto">
             <app-image-carousel [images]="soap.images"></app-image-carousel>
         </div>
     </div>
-    <div class="lg:w-1/2 w-full space-y-2 text-base">
+    <div class="lg:w-1/2 w-full space-y-2 text-lg">
         <div>
             <p class="font-bold text-4xl">{{ soap.name }}</p>
         </div>
-        <div class="flex space-x-1 text-xl">
+        <div class="flex space-x-2 text-xl">
             @if (soap.sale && soap.sale < soap.cost) {
                 <p class="text-red-500 font-semibold">{{ soap.sale | currency:'EUR':'symbol':'1.2-2' }}</p>
-                <p class="text-gray-600 line-through">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
+                <p class="text-base my-auto line-through">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
             } @else {
-                <p class="text-gray-600">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
+                <p class="">{{ soap.cost | currency:'EUR':'symbol':'1.2-2' }}</p>
             }
         </div>
         <div class="flex">
