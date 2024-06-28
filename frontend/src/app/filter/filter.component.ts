@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Filter } from '../interfaces/filter.interface';
+import { Price, Section, Sort } from '../interfaces/filter.interface';
 import { FilterService } from '../services/filter.service';
 
 @Component({
@@ -12,14 +12,19 @@ import { FilterService } from '../services/filter.service';
 })
 export class FilterComponent implements OnInit {
   isSpoilerVisible: boolean[] = [];
-  filter!: Filter;
+  categories!: Section;
+  price!: Price;
+  tags!: Section;
+  sort!: Sort;
 
   constructor(private filterService: FilterService) {}
 
   ngOnInit(): void {
-    this.filter = this.filterService.getFilter();
-    this.isSpoilerVisible = [false, false];
-    console.log(this.filter)
+    this.categories = this.filterService.getCategories();
+    this.price = this.filterService.getPrice();
+    this.tags = this.filterService.getTags();
+    this.sort = this.filterService.getSort();
+    this.isSpoilerVisible = [false, false, false, false];
   }
 
   toggleSpoiler(index: number) {

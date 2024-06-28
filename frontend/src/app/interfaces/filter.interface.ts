@@ -1,26 +1,22 @@
-export interface Filter {
-    category: Section;
-    price: Price
-    tags: Section;
-    sortBy: Sort;
-    opennedSections: boolean[];
-}
-
-interface Section {
+export interface Section {
     sectionName: string;
     sectionFields: Field[];
 }
 
-interface Field {
+export interface Field {
     fieldName: string;
     isFieldSelected: boolean;
     fieldAmount: number;
 }
 
-interface Price {
-    priceTo: number
+export interface Price {
+    minPrice: number;
+    maxPrice: number;
+    currentPrice: number;
 }
 
-interface Sort {
-    methodName: string;
+export interface Sort {
+    sortName: string;
+    methodNames: string[];
+    selectedMethod: number;
 }
