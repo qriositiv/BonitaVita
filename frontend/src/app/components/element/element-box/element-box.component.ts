@@ -14,7 +14,7 @@ export class ElementBoxComponent {
 
   constructor(private router: Router) {}
 
-  onSoapPageOpen(soapId: string) {
-    this.router.navigate(['soap', soapId])
+  onSoapPageOpen(productId: string) {
+    this.router.navigate(['product', productId])
   }
 }

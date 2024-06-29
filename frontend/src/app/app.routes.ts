@@ -5,7 +5,7 @@ import { AssortmentComponent } from './assortment/assortment.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'soap', component: AssortmentComponent },
-    { path: 'soap/:soapId', component: ElementPageComponent}
+    { path: 'assortment', component: AssortmentComponent },
+    { path: 'product/:productId', component: ElementPageComponent}
     // { path: '**', component: AboutComponent }
 ];
