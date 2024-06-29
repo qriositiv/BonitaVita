@@ -1,10 +1,12 @@
-export interface Section {
-    sectionName: string;
-    sectionFields: Field[];
+export interface CategoryField {
+    fieldName: string;
+    isFieldSelected: boolean;
+    fieldAmount: number;
 }
 
-export interface Field {
+export interface TagField {
     fieldName: string;
+    fieldIcon: string;
     isFieldSelected: boolean;
     fieldAmount: number;
 }

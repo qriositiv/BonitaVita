@@ -2,14 +2,14 @@
     <div class="space-y-2">
       @if (categories) {
         <div class="cursor-pointer w-full flex justify-between text-lg font-semibold hover:text-secondary-900" (click)="toggleSpoiler(0)">
-          <h3 class="">{{ categories.sectionName }}</h3>
+          <h3 class="">Categories</h3>
           <span class="text-xl font-bold">
             {{ isSpoilerVisible[0] ? '-' : '+' }}
           </span>
         </div>
         <div class="w-full transition-all duration-300 ease-in-out text-left" [ngClass]="{'hidden': !isSpoilerVisible[0]}">
           <div class="space-y-2">
-            @for (field of categories.sectionFields; track field) {
+            @for (field of categories; track field) {
               <div class="flex justify-between hover:text-secondary-900">
                 <label class="inline-flex items-center">
                   <input type="checkbox" class="form-checkbox checked:accent-secondary-900" [(ngModel)]="field.isFieldSelected">
@@ -52,25 +52,26 @@
 
       @if (tags) {
         <div class="cursor-pointer w-full flex justify-between text-lg font-semibold hover:text-secondary-900" (click)="toggleSpoiler(2)">
-          <h3 class="">{{ tags.sectionName }}</h3>
+          <h3 class="">Tags</h3>
           <span class="text-xl font-bold">
             {{ isSpoilerVisible[2] ? '-' : '+' }}
           </span>
         </div>
         <div class="w-full transition-all duration-300 ease-in-out text-left" [ngClass]="{'hidden': !isSpoilerVisible[2]}">
           <div class="space-y-2">
-            @for (field of tags.sectionFields; track field) {
+            @for (field of tags; track field) {
               <div class="flex justify-between hover:text-secondary-900">
                 <label class="inline-flex items-center">
-                  <input type="checkbox" class="form-checkbox checked:accent-secondary-900" [(ngModel)]="field.isFieldSelected">
-                  <span class="ml-2">{{ field.fieldName }}</span>
+                  <input type="checkbox" class="form-checkbox ml-2" [(ngModel)]="field.isFieldSelected">
+                  <span class="ml-2" [ngClass]="{'text-secondary-600': field.isFieldSelected}">{{ field.fieldName }}</span>
+                  <i class="fa {{ field.fieldIcon }} ml-1 text-xl" aria-hidden="true"></i>
                 </label>
                 <span>{{ field.fieldAmount }}</span>
               </div>
             }
           </div>
         </div>
-      }
+      }      
 
       @if (sort) {
         <div class="cursor-pointer w-full flex justify-between text-lg font-semibold hover:text-secondary-900" (click)="toggleSpoiler(3)">
@@ -94,6 +95,7 @@
       }
     </div>
     <div class="flex-col space-y-2 pt-4 mt-4 border-t border-dark-900">
+      <!-- <h3 class="text-lg font-semibold">Soap name</h3> -->
       <input type="text" placeholder="Enter soap name here" class="w-full p-2 border border-gray-300">
       <button class="w-full p-2 bg-secondary-900 hover:bg-secondary-600 text-nowrap">Search 🔍</button>
     </div>
@@ -102,6 +104,16 @@
 <style>
     .hidden {
       display: none;
+    }
+
+    .hidden-checkbox {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      pointer-events: none;
     }
 </style>
   

@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Price, Section, Sort } from '../interfaces/filter.interface';
+import { CategoryField, Price, Sort, TagField } from '../interfaces/filter.interface';
 
 @Injectable({
     providedIn: 'root',
 })
 export class FilterService {
-    getCategories(): Section {
-        return {
-                sectionName: 'Categories',
-                sectionFields: [
-                    { fieldName: 'New', isFieldSelected: false, fieldAmount: 1 },
-                    { fieldName: 'Popular', isFieldSelected: false, fieldAmount: 2 },
-                    { fieldName: 'Sale', isFieldSelected: false, fieldAmount: 0 }
-                ]
-            }
+    getCategories(): CategoryField[] {
+        return [
+            { fieldName: 'New', isFieldSelected: false, fieldAmount: 1 },
+            { fieldName: 'Popular', isFieldSelected: false, fieldAmount: 2 },
+            { fieldName: 'Sale', isFieldSelected: false, fieldAmount: 0 }
+        ];
     }
 
-    getTags(): Section {
-        return {
-                sectionName: 'Tags',
-                sectionFields: [
-                    { fieldName: 'Eco', isFieldSelected: false, fieldAmount: 3 },
-                    { fieldName: 'For children', isFieldSelected: false, fieldAmount: 6 }
-                ]
-            }
+    getTags(): TagField[] {
+        return [
+            { fieldName: 'Eco', fieldIcon: 'fa-leaf', isFieldSelected: false, fieldAmount: 3 },
+            { fieldName: 'For children', fieldIcon: 'fa-child', isFieldSelected: false, fieldAmount: 6 },
+            { fieldName: 'No chemicals', fieldIcon: 'fa-flask', isFieldSelected: false, fieldAmount: 1 },
+            { fieldName: 'Not allergic', fieldIcon: 'fa-medkit', isFieldSelected: false, fieldAmount: 0 }
+        ];
     }
 
     getPrice(): Price {
@@ -36,12 +32,12 @@ export class FilterService {
 
     getSort(): Sort {
         return {
-                sortName: 'Sort by',
-                methodNames: [
-                    'Price: Low to high',
-                    'Price: High to low',
-                ],
-                selectedMethod: 0
-            }
+            sortName: 'Sort by',
+            methodNames: [
+                'Price: Low to high',
+                'Price: High to low',
+            ],
+            selectedMethod: 0
+        };
     }
 }
