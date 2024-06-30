@@ -1,13 +1,16 @@
-<div class="flex justify-center font-comfortaa">
-    <div class="w-1/2 flex justify-left pl-40 items-center">
-        <div>
+<div class="lg:flex justify-center font-comfortaa">
+    <div class="w-1/2 max-lg:hidden flex justify-center mx-auto text-left pl-4 items-center">
             <h1 class="text-6xl font-bold">Натуральное мыло ручной работы</h1>
-            <!-- <p class="text-xl">Натуральное мыло ручной работы</p> -->
-        </div>
     </div>
-    <div class="w-1/2 flex justify-center overflow-hidden">
+    <div class="lg:w-1/2 w-full flex-col justify-center overflow-hidden">
         <div class="w-full">
-            <img src="https://bonitavita.lt/images/background/background5.jpg" alt="collection" class="w-full h-350px object-cover">
+            <img src="https://bonitavita.lt/images/background/background5.jpg" alt="collection" class="w-full max-lg:hidden h-350px object-cover">
+        </div>
+        <div class="w-full">
+            <img src="https://bonitavita.lt/images/background/background5.jpg" alt="collection" class="w-full lg:hidden h-150px object-cover">
+        </div>
+        <div class="w-full lg:hidden flex justify-center mx-auto mt-4 pl-4 items-center">
+            <h1 class="md:text-4xl sm:text-2xl text-xl font-bold text-center">Натуральное мыло ручной работы</h1>
         </div>
     </div>
 </div>
@@ -15,5 +18,8 @@
 <style>
     .h-350px {
         height: 350px;
+    }
+    .h-150px {
+        height: 150px;
     }
 </style>

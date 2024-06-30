@@ -9,7 +9,7 @@ export class MenuService {
         return [
             { name: 'Главная', route: '/' },
             { name: 'Ассортимент', route: '/assortment' },
-            { name: 'Создать мыло', route: '/create' },
+            // { name: 'Создать мыло', route: '/create' },
             { name: 'Контакты', route: '/contacts' }
         ];
     }
